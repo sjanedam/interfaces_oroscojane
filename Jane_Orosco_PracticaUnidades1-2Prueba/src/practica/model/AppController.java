@@ -8,10 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import practica.MainPractica;
@@ -26,6 +28,14 @@ public class AppController {
 	@FXML
 	private TableColumn<Person, String> apellidoCol;
 	@FXML
+	private TableColumn<Person, Integer> edadCol;
+	@FXML
+	private TableColumn<Person, String> sexoCol;
+	@FXML
+	private TableColumn<Person, String> espCol;
+	@FXML
+	private TableColumn<Person, Integer> telCol;
+	@FXML
 	private TableColumn<Person, String> emailCol;
 	
 	/* FORMULARIO */
@@ -34,32 +44,79 @@ public class AppController {
 	@FXML
     private TextField apellidoForm;
     @FXML
-    private TextField emailForm;
-    @FXML
     private TextField edadForm;
-
-	@FXML
-	private TableColumn<Person, Integer> edadCol;
+    @FXML
+    ToggleGroup sexo;
+    @FXML
+    private ChoiceBox<String> espChoiceBox;
+    @FXML
+    private TextField telForm;
+    @FXML
+    private TextField emailForm;
 
 	/* Lista auxiliar para Tablas */
 	private ObservableList<Person> datos = FXCollections.observableArrayList(
-			new Person("Jacob", "Smith", "jacob.smith@example.com", 30),
-			new Person("Isabella", "Johnson", "isabella.johnson@example.com", 40),
-			new Person("Ethan", "Williams", "ethan.williams@example.com", 50),
-			new Person("Emma", "Jones", "emma.jones@example.com", 61),
-			new Person("Michael", "Brown", "michael.brown@example.com", 34));
+			new Person("Ana","Ramos",27,"Mujer","Seguros",600909050,"anaramos@mail.com"),
+			new Person("Alan","Brief",43,"Hombre","Gestor",600900500,"alan@mail.com")
+	);
 
 	/* ---------------- MÉTODOS ---------------- */
 	@FXML
 	private void initialize() {
+		/** INFORMACIÓN DE LA TABLA */
 		tablaTrabajadores.setEditable(true);
 		/* Asociamos cada columna del table view a una propiedad de la clase Person */
 		nombreCol.setCellValueFactory(new PropertyValueFactory<Person, String>("nombre"));
 		apellidoCol.setCellValueFactory(new PropertyValueFactory<Person, String>("apellido"));
-		emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("email"));
 		edadCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("edad"));
+		
+		sexoCol.setCellValueFactory(new PropertyValueFactory<Person, String>("sexo"));
+		espCol.setCellValueFactory(new PropertyValueFactory<Person, String>("especializacion"));
+		telCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("telefono"));
+		emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("email"));
 		// Se rellena la tabla con objetos de la clase Person
 		tablaTrabajadores.setItems(datos);
+		
+		/** INFORMACIÓN DE LOS CHOICEBOX */
+		espChoiceBox.getItems().addAll("Seguros","Gestor","Empresas","Herencias","Comunidades");
+		espChoiceBox.setValue("Selecciona la especialización.");
+	}
+	
+	@FXML
+    void addDatos(ActionEvent event) {
+		tablaTrabajadores.setEditable(true);
+		
+		/** AÑADIMOS DATOS A LA TABLA */
+		String nombreTrabajador = nombreForm.getText();
+		String apellidoTrabajador = apellidoForm.getText();
+		String edadT = edadForm.getText();
+		int edadTrabajador = Integer.parseInt(edadT);
+
+		RadioButton sexoElegido = (RadioButton) sexo.getSelectedToggle();
+		String sexoTrabajador = sexoElegido.getText();
+		
+		String espTrabajador = espChoiceBox.getValue();
+		String telT = telForm.getText();
+		int telefonoTrabajador = Integer.parseInt(telT);
+		String emailTrabajador = emailForm.getText();
+		
+		datos.add(new Person(nombreTrabajador, apellidoTrabajador,edadTrabajador,
+				sexoTrabajador, espTrabajador, telefonoTrabajador, emailTrabajador));
+		
+		nombreForm.clear();
+		apellidoForm.clear();
+		edadForm.clear();
+		telForm.clear();
+		emailForm.clear();
+		
+		initialize();
+		
+    }
+	
+	/* Cerrar la aplicación */
+	@FXML
+	private void exitApp(ActionEvent event) {
+		System.exit(0);
 	}
 	
 	/* Cerrar sesión de la aplicación y que vuelva a la pantalla de login */
