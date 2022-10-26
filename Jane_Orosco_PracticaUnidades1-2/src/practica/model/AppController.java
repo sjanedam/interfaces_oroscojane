@@ -190,6 +190,7 @@ public class AppController {
 		edadForm.clear();
 		telForm.clear();
 		emailForm.clear();
+		espChoiceBox.getItems().clear();
 
 		initialize();
 
