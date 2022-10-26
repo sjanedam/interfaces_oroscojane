@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: 45C4E6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.LoginController">
    <children>
-      <MenuBar nodeOrientation="RIGHT_TO_LEFT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: lightblue;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" onAction="#exitApp" text="Salir">
             <items>
@@ -65,10 +65,13 @@
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
             </PasswordField>
-            <Button fx:id="buttonLogin" mnemonicParsing="false" onAction="#abrirNuevaVentana" text="Iniciar sesión">
+            <Button fx:id="buttonLogin" mnemonicParsing="false" onAction="#abrirNuevaVentana" style="-fx-background-color: lightblue;" text="Iniciar sesión">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
       </VBox>

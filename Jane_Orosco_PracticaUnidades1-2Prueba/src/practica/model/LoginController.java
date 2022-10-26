@@ -55,10 +55,11 @@ public class LoginController {
 		Parent root;
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("practica/view/AppLayout.fxml"));
-			Stage stage = new Stage();
-			stage.setTitle("Aplicación");
-			stage.setScene(new Scene(root));
-			stage.show();
+			Stage loginStage = new Stage();
+			loginStage.setTitle("Aplicación");
+			loginStage.setScene(new Scene(root));
+			loginStage.show();
+			loginStage.setResizable(false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
