@@ -52,6 +52,7 @@
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
             </TextField>
+            <Label fx:id="usuario" text=" " />
             <Label text="Contraseña">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
@@ -65,6 +66,7 @@
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
             </PasswordField>
+            <Label fx:id="contra" text=" " />
             <Button fx:id="buttonLogin" mnemonicParsing="false" onAction="#abrirNuevaVentana" style="-fx-background-color: lightblue;" text="Iniciar sesión">
                <VBox.margin>
                   <Insets top="20.0" />
