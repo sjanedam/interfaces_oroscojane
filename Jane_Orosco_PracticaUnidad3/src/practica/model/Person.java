@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Person {
 	private SimpleStringProperty nombre;
-    private SimpleStringProperty apellido;
+    private SimpleStringProperty dni;
     private SimpleIntegerProperty edad;
     private SimpleStringProperty sexo;
     private SimpleStringProperty especializacion;
@@ -13,12 +13,12 @@ public class Person {
     private SimpleStringProperty email;
     
     
-    public Person(String paramNombre, String paramApellido, Integer paramEdad,
+    public Person(String paramNombre, String paramDNI, Integer paramEdad,
     		String paramSexo, String paramEspecializacion, Integer paramTelefono,
     		String paramEmail) {
 		super();
 		this.nombre = new SimpleStringProperty(paramNombre);
-		this.apellido = new SimpleStringProperty(paramApellido);
+		this.dni = new SimpleStringProperty(paramDNI);
 		this.edad = new SimpleIntegerProperty(paramEdad);
 		this.sexo = new SimpleStringProperty(paramSexo);
 		this.especializacion = new SimpleStringProperty(paramEspecializacion);
@@ -32,11 +32,11 @@ public class Person {
     public void setNombre(String paramNombre) {
     	nombre.set(paramNombre);
     }
-    public String getApellido() {
-    	return apellido.get();
+    public String getDni() {
+    	return dni.get();
     }
-    public void setApellido(String paramApellido) {
-    	apellido.set(paramApellido);
+    public void setDni(String paramDNI) {
+    	dni.set(paramDNI);
     }
     public Integer getEdad() {
     	return edad.get();

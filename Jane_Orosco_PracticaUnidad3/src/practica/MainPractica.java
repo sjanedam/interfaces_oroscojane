@@ -20,7 +20,7 @@ public class MainPractica extends Application {
 			// Se añade el diseño principal a la escena
 			Scene scene = new Scene(logInOverview);
 			primaryStage.setResizable(true);
-			primaryStage.setTitle("PRÁCTICA UNIDAD 1-2. GESTORÍA.");
+			primaryStage.setTitle("Iniciar Sesión");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			

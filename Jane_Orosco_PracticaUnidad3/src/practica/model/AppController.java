@@ -2,6 +2,8 @@ package practica.model;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +13,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.control.cell.TextFieldTreeCell;
+import javafx.scene.image.Image;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -36,7 +42,7 @@ public class AppController {
 	@FXML
 	private TableColumn<Person, String> nombreCol;
 	@FXML
-	private TableColumn<Person, String> apellidoCol;
+	private TableColumn<Person, String> dniCol;
 	@FXML
 	private TableColumn<Person, Integer> edadCol;
 	@FXML
@@ -61,7 +67,7 @@ public class AppController {
 	@FXML
 	private TextField nombreForm;
 	@FXML
-	private TextField apellidoForm;
+	private TextField dniForm;
 	@FXML
 	private TextField edadForm;
 	@FXML
@@ -72,6 +78,11 @@ public class AppController {
 	private TextField telForm;
 	@FXML
 	private TextField emailForm;
+
+	// Eliminar
+	@FXML
+	private TextField removeDniForm;
+
 	// Citas
 	@FXML
 	private DatePicker fechaForm;
@@ -88,8 +99,14 @@ public class AppController {
 
 	// Lista auxiliar para tabla de empleados
 	private ObservableList<Person> datos = FXCollections.observableArrayList(
-			new Person("Ana", "Ramos", 27, "Mujer", "Notaría", 600909050, "anaramos@mail.com"),
-			new Person("Alan", "Brief", 43, "Hombre", "Seguros", 600900500, "alan@mail.com"));
+			new Person("Ana Ramos", "12345678A", 27, "Mujer", "Notaría", 600909050, "anaramos@mail.com"),
+			new Person("Alan Brief", "12345678B", 43, "Hombre", "Seguros", 600900500, "alan@mail.com"),
+			new Person("Lola Lolita", "12345678C", 23, "Hombre", "Notaría", 600900500, "lolalolita@mail.com"),
+			new Person("Jaime Fuentes", "12345678D", 33, "Hombre", "Abogados", 600900500, "jaimef@mail.com"),
+			new Person("María Pérez", "12345678E", 51, "Mujer", "Empresas", 600900500, "mariap@mail.com"),
+			new Person("Helena Torres", "12345678F", 43, "Mujer", "Asesoría Laboral", 600900500,
+					"helenatorres@mail.com"),
+			new Person("Claudia Torres", "12345678G", 37, "Mujer", "Empresas", 600900500, "clautorres@mail.com"));
 
 	// Lista auxiliar para tablas de citas
 	private ObservableList<Citas> citaciones = FXCollections.observableArrayList(new Citas("26/10/2022", "Herencia"),
@@ -99,6 +116,7 @@ public class AppController {
 	/* Inicializar los datos */
 	@FXML
 	private void initialize() {
+
 		// INFORMACIÓN DE LA TABLA
 		tablaTrabajadores.setEditable(true);
 		tablaCitas.setEditable(true);
@@ -107,7 +125,7 @@ public class AppController {
 		// citas
 		// Empleados
 		nombreCol.setCellValueFactory(new PropertyValueFactory<Person, String>("nombre"));
-		apellidoCol.setCellValueFactory(new PropertyValueFactory<Person, String>("apellido"));
+		dniCol.setCellValueFactory(new PropertyValueFactory<Person, String>("dni"));
 		edadCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("edad"));
 		sexoCol.setCellValueFactory(new PropertyValueFactory<Person, String>("sexo"));
 		espCol.setCellValueFactory(new PropertyValueFactory<Person, String>("especializacion"));
@@ -170,7 +188,7 @@ public class AppController {
 
 		// Añadimos datos a la tabla
 		String nombreTrabajador = nombreForm.getText();
-		String apellidoTrabajador = apellidoForm.getText();
+		String dniTrabajador = dniForm.getText();
 		String edadT = edadForm.getText();
 		int edadTrabajador = Integer.parseInt(edadT);
 
@@ -182,18 +200,49 @@ public class AppController {
 		int telefonoTrabajador = Integer.parseInt(telT);
 		String emailTrabajador = emailForm.getText();
 
-		datos.add(new Person(nombreTrabajador, apellidoTrabajador, edadTrabajador, sexoTrabajador, espTrabajador,
+		datos.add(new Person(nombreTrabajador, dniTrabajador, edadTrabajador, sexoTrabajador, espTrabajador,
 				telefonoTrabajador, emailTrabajador));
 
 		nombreForm.clear();
-		apellidoForm.clear();
+		dniForm.clear();
 		edadForm.clear();
 		telForm.clear();
 		emailForm.clear();
+		sexo.getSelectedToggle().setSelected(false);
 		espChoiceBox.getItems().clear();
 
-		initialize();
+		// initialize();
 
+	}
+
+	/* Eliminar datos de la tabla */
+	@FXML
+	void removeDatos(ActionEvent event) {
+		// Permitimos que la tabla pueda ser editado
+		tablaTrabajadores.setEditable(true);
+
+		// Recogemos el valor del DNI de la persona que queremos eliminar
+		String dniTrabajador = removeDniForm.getText();
+
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Aviso");
+		alert.setHeaderText("Esta acción es peligrosa.");
+		alert.setContentText("Una vez confirmes esta acción, los datos no podrán ser restaurados.");
+
+		// Icono
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("img/warning.png"));
+
+		Optional<ButtonType> action = alert.showAndWait();
+		if (action.get() == ButtonType.OK) {
+			// Recorremos la lista
+			for (int i = 0; i < datos.size(); i++) {
+				if (datos.get(i).getDni().equalsIgnoreCase(dniTrabajador)) {
+					datos.remove(i);
+				}
+			}
+			removeDniForm.clear();
+		}
 	}
 
 	@FXML
