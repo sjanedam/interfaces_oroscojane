@@ -3,6 +3,7 @@ package practica.model;
 import static javafx.scene.input.KeyCode.ENTER;
 import static javafx.scene.input.KeyCode.ESCAPE;
 import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class LoginController {
+	
 	/** CONTROLES Y MÉTODOS DE LA PANTALLA DE LOGIN */
 	@FXML
 	private Button buttonLogin;
@@ -36,6 +38,7 @@ public class LoginController {
 
 	@FXML
 	private Label usuario;
+	
 
 	/* ---------------- MÉTODOS ---------------- */
 	/* Salir de la aplicación */
@@ -44,19 +47,18 @@ public class LoginController {
 		System.exit(0);
 	}
 
+	/* Initialize */
 	@FXML
 	public void initialize() {
 		// Cambiamos el cursor cuando esté dentro del botón de inicio de sesión
 		buttonLogin.setCursor(Cursor.HAND);
 		// Para poder dar a enter cuando guardemos el usuario y la contraseña
 	}
-
+	
 	/* Iniciar sesión en la aplicación */
 	@FXML
 	public void abrirNuevaVentana(ActionEvent event) {		
-		// Creamos el dialogo de tipo alert, de tipo error, con su nombre y su header ya
-		// que no cambiará
-		// a diferencia del contenido
+		// Creamos el dialogo de tipo alert, de tipo error, con su nombre y su header ya que no cambiará a diferencia del contenido
 		Alert infoAlert = new Alert(AlertType.ERROR);
 		infoAlert.setTitle("Aviso");
 		infoAlert.setHeaderText("Se ha produido un error.");
@@ -135,7 +137,6 @@ public class LoginController {
 			contra.setText("La contraseña es incorrecta. Vuelve a intentarlo.");
 			contra.setTextFill(Color.rgb(210, 39, 30));
 		}
-
 	}
 
 	private void handleButtonLogin() {

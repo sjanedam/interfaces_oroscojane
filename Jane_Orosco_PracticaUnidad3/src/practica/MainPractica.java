@@ -24,8 +24,7 @@ public class MainPractica extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			primaryStage.getIcons().add(new Image("img/logo.png"));
-			
+			primaryStage.getIcons().add(new Image("img/logo.png"));			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

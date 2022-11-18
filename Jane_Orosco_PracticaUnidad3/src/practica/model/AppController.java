@@ -3,12 +3,12 @@ package practica.model;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
@@ -60,7 +61,11 @@ public class AppController {
 	@FXML
 	private TableColumn<Citas, String> asuntoCol;
 	@FXML
+	private TableColumn<Citas, String> horaCol;
+	@FXML
 	private TableColumn<Citas, String> fechaCol;
+	@FXML
+	private TableColumn<Citas, String> prioridadCol;
 
 	// FORMULARIO
 	// Empleados
@@ -87,7 +92,11 @@ public class AppController {
 	@FXML
 	private DatePicker fechaForm;
 	@FXML
+	private TextField horaForm;
+	@FXML
 	private TextArea asuntoForm;
+	@FXML
+	private ComboBox<String> prioComboBox;
 
 	// LISTVIEW
 	@FXML
@@ -109,8 +118,10 @@ public class AppController {
 			new Person("Claudia Torres", "12345678G", 37, "Mujer", "Empresas", 600900500, "clautorres@mail.com"));
 
 	// Lista auxiliar para tablas de citas
-	private ObservableList<Citas> citaciones = FXCollections.observableArrayList(new Citas("26/10/2022", "Herencia"),
-			new Citas("27/10/2022", "Seguro de coche"));
+	private ObservableList<Citas> citaciones = FXCollections.observableArrayList(
+			new Citas("26/10/2022", "10:30AM", "Herencia", "Alta"),
+			new Citas("27/10/2022", "11:00AM", "Seguro de coche", "Baja"),
+			new Citas("27/10/2022", "12:00PM", "Herencia", "Media"));
 
 	/* ---------------- MÉTODOS ---------------- */
 	/* Inicializar los datos */
@@ -131,9 +142,12 @@ public class AppController {
 		espCol.setCellValueFactory(new PropertyValueFactory<Person, String>("especializacion"));
 		telCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("telefono"));
 		emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("email"));
+
 		// Citas
 		fechaCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("fecha"));
+		horaCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("hora"));
 		asuntoCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("asunto"));
+		prioridadCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("prioridad"));
 
 		// Se rellena la tabla con objetos de la clase Person
 		tablaTrabajadores.setItems(datos);
@@ -142,12 +156,22 @@ public class AppController {
 		// INFORMACIÓN DE LOS CHOICEBOX
 		espChoiceBox.getItems().addAll("Notaría", "Abogados", "Seguros", "Empresas", "Asesoría laboral");
 		espChoiceBox.setValue("Selecciona la especialización.");
+		espChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			System.out.println("Antiguo -> " + oldValue + "\n" + "Nuevo -> " + newValue);
+		});
+
+		// INFORMACIÓN DEL COMBO BOC
+		prioComboBox.getItems().addAll("Baja", "Alta", "Media", "Urgente");
+		prioComboBox.setValue("Prioridad...");
+		prioComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			System.out.println("Antiguo -> " + oldValue + "\n" + "Nuevo -> " + newValue);
+		});
 
 		// LISTVIEW
 		empresaLista.getItems().addAll("Empresa autónoma 1", "Empresa pequeña S. L.", "Empresa grande S. A.",
 				"Empresa pequeña S. L. U.", "Empresa autónoma 2", "Empresa autónoma 3");
 		empresaLista.setCellFactory(TextFieldListCell.forListView());
-		empresaLista.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		empresaLista.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
 		// TREEVIEW
 		// RAÍZ
@@ -209,10 +233,7 @@ public class AppController {
 		telForm.clear();
 		emailForm.clear();
 		sexo.getSelectedToggle().setSelected(false);
-		espChoiceBox.getItems().clear();
-
-		// initialize();
-
+		espChoiceBox.setValue("Selecciona la especialización.");
 	}
 
 	/* Eliminar datos de la tabla */
@@ -245,22 +266,64 @@ public class AppController {
 		}
 	}
 
+	/* Añadir datos a las citas */
 	@FXML
 	void addDates(ActionEvent event) {
-		// Permitimos que la tabla pueda ser editado
-		tablaCitas.setEditable(true);
+		// Creamos el dialogo de tipo alert, de tipo error, con su nombre y su header ya
+		// que no cambiará a diferencia del contenido
+		Alert infoAlert = new Alert(AlertType.ERROR);
+		infoAlert.setTitle("Aviso");
+		infoAlert.setHeaderText("Se ha produido un error.");
+		// Cambiamos el cursor mientras se encuentre dentro del Alert
+		infoAlert.getDialogPane().setCursor(Cursor.WAIT);
 
-		// Añadimos datos a la tabla
-		String fecha = fechaForm.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		String asunto = asuntoForm.getText();
+		// Cambiamos el icono del aviso
+		Stage stageAlert = (Stage) infoAlert.getDialogPane().getScene().getWindow();
+		stageAlert.getIcons().add(new Image("img/fail.png"));
 
-		citaciones.add(new Citas(fecha, asunto));
+		if (fechaForm.getValue().toString() == null
+			|| horaForm.getText().toString().trim().isEmpty()
+			|| asuntoForm.getText().toString().trim().isEmpty()
+			|| prioComboBox.getValue().toString().isEmpty()) {
+			infoAlert.showAndWait();
+		} else {
+			// Permitimos que la tabla pueda ser editado
+			tablaCitas.setEditable(true);
 
-		fechaForm.getEditor().clear();
-		asuntoForm.clear();
+			// Añadimos datos a la tabla
+			String fecha = fechaForm.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			String hora = horaForm.getText();
+			String asunto = asuntoForm.getText();
+			String prioridad = prioComboBox.getValue();
 
-		initialize();
-		// datepicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			citaciones.add(new Citas(fecha, hora, asunto, prioridad));
+
+			fechaForm.getEditor().clear();
+			horaForm.clear();
+			asuntoForm.clear();
+			prioComboBox.setValue("Prioridad...");
+		}
+	}
+
+	/* Eliminar datos de citas */
+	@FXML
+	void deleteDates(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Aviso");
+		alert.setHeaderText("Esta acción es peligrosa.");
+		alert.setContentText("Una vez confirmes esta acción, los datos no podrán ser restaurados.");
+
+		// Icono
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("img/warning.png"));
+
+		Optional<ButtonType> action = alert.showAndWait();
+		if (action.get() == ButtonType.OK) {
+			ObservableList<Citas> citaciones, allRows;
+			allRows = tablaCitas.getItems();
+			citaciones = tablaCitas.getSelectionModel().getSelectedItems();
+			citaciones.forEach(allRows::remove);
+		}
 	}
 
 	/* Abrir tutorial */
