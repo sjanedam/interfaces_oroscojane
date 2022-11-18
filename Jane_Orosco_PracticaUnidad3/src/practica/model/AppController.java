@@ -1,5 +1,8 @@
 package practica.model;
 
+import static javafx.scene.input.KeyCode.ENTER;
+import static javafx.scene.input.KeyCode.ESCAPE;
+
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -14,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
@@ -202,11 +206,79 @@ public class AppController {
 		// Expadimos por defecto el ítem raíz
 		rootItem.setExpanded(true);
 		treeEmpresas.setRoot(rootItem);
+		
+		/** EVENTOOOOOS DE TECLADO */
+			// No permitir que la EDAD sean caracteres
+		edadForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
+			if (!Character.isDigit(e.getCharacter().charAt(0))) {
+				e.consume();
+				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+			} else {
+				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+			}
+		});
+			// No permitir que EL TELÉFONO sean caracteres
+		telForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
+			if (!Character.isDigit(e.getCharacter().charAt(0))) {
+				e.consume();
+				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+			} else {
+				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+			}
+		});
+			// No permitir que los NOMBRES tengan caracteres especiales o numeros
+		nombreForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
+			if (Character.isWhitespace(e.getCharacter().charAt(0))) {
+				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+			} else if (Character.isDigit(e.getCharacter().charAt(0))
+					|| !Character.isAlphabetic(e.getCharacter().charAt(0))) {
+				e.consume();
+				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+			} else {
+				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+			}
+		});
+			// No permitir que los DNI tengan caracteres especiales o numeros
+		dniForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
+			if (Character.isDigit(e.getCharacter().charAt(0))) {
+				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+			} else if (Character.isAlphabetic(e.getCharacter().charAt(0))) {
+				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+			} else {
+				e.consume();
+				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+			}
+		});
 	}
 
 	/* Añadir datos a la tabla */
 	@FXML
 	void addDatos(ActionEvent event) {
+		// Creamos el dialogo de tipo alert, de tipo error, con su nombre y su header ya
+		// que no cambiará a diferencia del contenido
+		Alert infoAlert = new Alert(AlertType.ERROR);
+		infoAlert.setTitle("Aviso");
+		infoAlert.setHeaderText("Se ha produido un error.");
+		// Cambiamos el cursor mientras se encuentre dentro del Alert
+		infoAlert.getDialogPane().setCursor(Cursor.WAIT);
+
+		// Cambiamos el icono del aviso
+		Stage stageAlert = (Stage) infoAlert.getDialogPane().getScene().getWindow();
+		stageAlert.getIcons().add(new Image("img/fail.png"));
+
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
+		// o enter,
+		// para salir habrá que pulsar el botón de aceptar
+		stageAlert.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+			System.out.println(" -> " + e.getCode().toString());
+			if (e.getCode() == ESCAPE) {
+				e.consume();
+			}
+			if (e.getCode() == ENTER) {
+				e.consume();
+			}
+		});
+
 		// Permitimos que la tabla pueda ser editado
 		tablaTrabajadores.setEditable(true);
 
@@ -214,26 +286,35 @@ public class AppController {
 		String nombreTrabajador = nombreForm.getText();
 		String dniTrabajador = dniForm.getText();
 		String edadT = edadForm.getText();
-		int edadTrabajador = Integer.parseInt(edadT);
-
 		RadioButton sexoElegido = (RadioButton) sexo.getSelectedToggle();
-		String sexoTrabajador = sexoElegido.getText();
-
 		String espTrabajador = espChoiceBox.getValue();
 		String telT = telForm.getText();
-		int telefonoTrabajador = Integer.parseInt(telT);
 		String emailTrabajador = emailForm.getText();
 
-		datos.add(new Person(nombreTrabajador, dniTrabajador, edadTrabajador, sexoTrabajador, espTrabajador,
-				telefonoTrabajador, emailTrabajador));
+		if (nombreTrabajador.trim().isEmpty() || dniTrabajador.trim().isEmpty() || edadT.trim().isEmpty()
+				|| sexoElegido == null || telT.trim().isEmpty() || emailTrabajador.isEmpty()) {
+			infoAlert.setContentText("Los campos no pueden estar vacíos. Introduzca los datos de nuevo.");
+			infoAlert.showAndWait();
 
-		nombreForm.clear();
-		dniForm.clear();
-		edadForm.clear();
-		telForm.clear();
-		emailForm.clear();
-		sexo.getSelectedToggle().setSelected(false);
-		espChoiceBox.setValue("Selecciona la especialización.");
+		} else if (espTrabajador.equals("Selecciona la especialización.")) {
+			infoAlert.setContentText("Tienes que especificar una especialización.");
+			infoAlert.showAndWait();
+		} else {
+
+			int edadTrabajador = Integer.parseInt(edadT);
+			int telefonoTrabajador = Integer.parseInt(telT);
+			String sexoTrabajador = sexoElegido.getText();
+			datos.add(new Person(nombreTrabajador, dniTrabajador, edadTrabajador, sexoTrabajador, espTrabajador,
+					telefonoTrabajador, emailTrabajador));
+
+			nombreForm.clear();
+			dniForm.clear();
+			edadForm.clear();
+			telForm.clear();
+			emailForm.clear();
+			sexo.getSelectedToggle().setSelected(false);
+			espChoiceBox.setValue("Selecciona la especialización.");
+		}
 	}
 
 	/* Eliminar datos de la tabla */
@@ -254,6 +335,19 @@ public class AppController {
 		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 		stage.getIcons().add(new Image("img/warning.png"));
 
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
+		// o enter,
+		// para salir habrá que pulsar el botón de aceptar
+		stage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+			System.out.println(" -> " + e.getCode().toString());
+			if (e.getCode() == ESCAPE) {
+				e.consume();
+			}
+			if (e.getCode() == ENTER) {
+				e.consume();
+			}
+		});
+				
 		Optional<ButtonType> action = alert.showAndWait();
 		if (action.get() == ButtonType.OK) {
 			// Recorremos la lista
@@ -281,10 +375,25 @@ public class AppController {
 		Stage stageAlert = (Stage) infoAlert.getDialogPane().getScene().getWindow();
 		stageAlert.getIcons().add(new Image("img/fail.png"));
 
-		if (fechaForm.getValue().toString() == null
-			|| horaForm.getText().toString().trim().isEmpty()
-			|| asuntoForm.getText().toString().trim().isEmpty()
-			|| prioComboBox.getValue().toString().isEmpty()) {
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
+		// o enter,
+		// para salir habrá que pulsar el botón de aceptar
+		stageAlert.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+			System.out.println(" -> " + e.getCode().toString());
+			if (e.getCode() == ESCAPE) {
+				e.consume();
+			}
+			if (e.getCode() == ENTER) {
+				e.consume();
+			}
+		});
+		
+		if (fechaForm.getValue() == null || horaForm.getText().toString().trim().isEmpty()
+				|| asuntoForm.getText().toString().trim().isEmpty()) {
+			infoAlert.setContentText("Los campos no pueden estar vacíos. Introduzca los datos de nuevo.");
+			infoAlert.showAndWait();
+		} else if (prioComboBox.getValue().toString().equals("Prioridad...")) {
+			infoAlert.setContentText("Tienes que especificar la prioridad.");
 			infoAlert.showAndWait();
 		} else {
 			// Permitimos que la tabla pueda ser editado
@@ -317,6 +426,19 @@ public class AppController {
 		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 		stage.getIcons().add(new Image("img/warning.png"));
 
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
+		// o enter,
+		// para salir habrá que pulsar el botón de aceptar
+		stage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+			System.out.println(" -> " + e.getCode().toString());
+			if (e.getCode() == ESCAPE) {
+				e.consume();
+			}
+			if (e.getCode() == ENTER) {
+				e.consume();
+			}
+		});
+		
 		Optional<ButtonType> action = alert.showAndWait();
 		if (action.get() == ButtonType.OK) {
 			ObservableList<Citas> citaciones, allRows;
@@ -339,9 +461,10 @@ public class AppController {
 			// Se añade el diseño principal a la escena
 			Scene scene = new Scene(tutorialOverview);
 			tutorialStage.setResizable(false);
-			tutorialStage.setTitle("PRÁCTICA UNIDAD 1-2. GESTORÍA.");
+			tutorialStage.setTitle("Tutorial.");
 			tutorialStage.setScene(scene);
 			tutorialStage.show();
+			tutorialStage.getIcons().add(new Image("img/logo.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -377,6 +500,7 @@ public class AppController {
 			primaryStage.setTitle("PRÁCTICA UNIDAD 1-2. GESTORÍA.");
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			primaryStage.getIcons().add(new Image("img/logo.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();

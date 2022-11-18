@@ -122,6 +122,7 @@ public class LoginController {
 			usuario.setTextFill(Color.rgb(210, 39, 30));
 			contra.setText("La contraseña es incorrecta. Vuelve a intentarlo.");
 			contra.setTextFill(Color.rgb(210, 39, 30));
+			
 
 			// Por el contrario si solo el Field de usuario está erróneo, solo se mostrará
 			// el LABEL del usuario

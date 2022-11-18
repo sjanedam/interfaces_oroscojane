@@ -26,6 +26,8 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -308,11 +310,16 @@
                                           <Font name="System Bold Italic" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="319.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteDates" style="-fx-background-color: lightblue;" text="Eliminar">
+                                    <Button layoutX="318.0" layoutY="374.0" mnemonicParsing="false" onAction="#deleteDates" style="-fx-background-color: lightblue;" text="Eliminar">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Button>
+                                    <Label layoutX="132.0" layoutY="349.0" prefHeight="17.0" prefWidth="249.0" text="Para eliminar una cita, pulsa la fila que quieras eliminar" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="349.0">
+                                       <font>
+                                          <Font name="System Italic" size="10.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                           </items>
@@ -353,8 +360,13 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="230.0">
                                  <children>
-                                    <Slider blockIncrement="1.0" layoutX="153.0" layoutY="14.0" majorTickUnit="22.0" max="2022.0" min="2000.0" showTickLabels="true" />
-                                    <Text layoutX="15.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En nuestra gestoría  asistimos a empresas y a sociedades en sus retos diarios. Tramitamos, gestionamos y asesoramos en todos los asuntos relacionados con el área fiscal, contable, mercantil, laboral, legal y de extranjería, y también realizamos procesos de selección de personal. Desde 2000 somos la gestoría de confianza de empresas como la tuya. Hacemos que las gestiones se conviertan en una tarea sencilla para las empresas a través de un único servicio que integra todas las competencias de los negocios. A su vez nos encargamos de tramitaciones que necesiten de un notario o abogado o un asesor, asimismo realizamos trámites relacionados con seguros como los seguros de tu coche." textAlignment="JUSTIFY" wrappingWidth="416.919921875" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.080078125" AnchorPane.topAnchor="58.0" />
+                                    <Slider blockIncrement="1.0" layoutX="108.0" layoutY="14.0" majorTickUnit="22.0" max="2022.0" min="2000.0" showTickLabels="true" showTickMarks="true" value="2011.0" />
+                                    <Text layoutX="15.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En nuestra gestoría  asistimos a empresas y a sociedades en sus retos diarios. Tramitamos, gestionamos y asesoramos en todos los asuntos relacionados con el área fiscal, contable, mercantil, laboral, legal y de extranjería, y también realizamos procesos de selección de personal. Desde 2000 somos la gestoría de confianza de empresas como la tuya. Hacemos que las gestiones se conviertan en una tarea sencilla para las empresas a través de un único servicio que integra todas las competencias de los negocios. A su vez nos encargamos de tramitaciones que necesiten de un notario o abogado o un asesor, asimismo realizamos trámites relacionados con seguros como los seguros de tu coche." textAlignment="JUSTIFY" wrappingWidth="326.919921875" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="404.0" AnchorPane.topAnchor="58.0" />
+                                    <ImageView fitHeight="336.0" fitWidth="353.0" layoutX="367.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="292.32591247558594" AnchorPane.leftAnchor="367.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="56.0">
+                                       <image>
+                                          <Image url="@../../img/img.jpg" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -363,9 +375,14 @@
                                       <panes>
                                         <TitledPane alignment="TOP_LEFT" animated="false" text="Empresas">
                                              <content>
-                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                <AnchorPane prefHeight="418.0" prefWidth="268.0">
                                                    <children>
-                                                      <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ofrecemos un servicio integral de asesoramiento y gestión de la parte fiscal, contable y laboral de tu negocio, ya seas autónomo o empresa." textAlignment="JUSTIFY" wrappingWidth="125.89255380630493" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <Text layoutX="41.6" layoutY="46.54921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Ofrecemos un servicio integral de asesoramiento y gestión de la parte fiscal, contable y laboral de tu negocio, ya seas autónomo o empresa." textAlignment="JUSTIFY" wrappingWidth="205.89255380630493" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="24.0" />
+                                                      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="53.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/empresa.jpg" />
+                                                         </image>
+                                                      </ImageView>
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -374,7 +391,12 @@
                                              <content>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                    <children>
-                                                      <Text layoutX="19.6" layoutY="32.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Nos encargamos del proceso completo en la gestión de documentos y escrituras notariales. Mantenemos puntualmente informado al cliente del estatus de la gestión notarial hasta su finalización." textAlignment="JUSTIFY" wrappingWidth="120.49997556209564" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <Text layoutX="83.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nos encargamos del proceso completo en la gestión de documentos y escrituras notariales. Mantenemos puntualmente informado al cliente del estatus de la gestión notarial hasta su finalización." textAlignment="JUSTIFY" wrappingWidth="197.4999679327011" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.50003206729889" AnchorPane.topAnchor="14.05078125" />
+                                                      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="92.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/notaria.jpg" />
+                                                         </image>
+                                                      </ImageView>
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -383,7 +405,12 @@
                                              <content>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                    <children>
-                                                      <Text layoutX="19.6" layoutY="32.54921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuestro ámbito de actuación se extiende al orden civil, penal, administrativo, laboral y mercantil en todo el territorio nacional, cubriendo desde el asesoramiento previo hasta la defensa en procedimientos judiciales." textAlignment="JUSTIFY" wrappingWidth="120.09373331069946" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <Text layoutX="39.6" layoutY="42.54921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuestro ámbito de actuación se extiende al orden civil, penal, administrativo, laboral y mercantil en todo el territorio nacional, cubriendo desde el asesoramiento previo hasta la defensa en procedimientos judiciales." textAlignment="JUSTIFY" wrappingWidth="210.09372568130493" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="20.0" />
+                                                      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="52.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/abogados.jpg" />
+                                                         </image>
+                                                      </ImageView>
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -392,7 +419,12 @@
                                              <content>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                    <children>
-                                                      <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le presentaremos la mejor solución y realizaremos un seguimiento y control permanente de las pólizas contratadas con el fin de mantenerlas actualizadas, recordándole ajustes varíen sus circunstancias personales o las del mercado." wrappingWidth="129.2870911359787" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <Text layoutX="29.6" layoutY="37.54921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Le presentaremos la mejor solución y realizaremos un seguimiento y control permanente de las pólizas contratadas con el fin de mantenerlas actualizadas, recordándole ajustes varíen sus circunstancias personales o las del mercado." wrappingWidth="210.2870911359787" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="15.0" />
+                                                      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/seguros.jpg" />
+                                                         </image>
+                                                      </ImageView>
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -401,7 +433,12 @@
                                              <content>
                                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                                    <children>
-                                                      <Text layoutX="19.6" layoutY="32.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Asesoramos en materia laboral a Empresas, Pymes y Autónomos de la Comunidad de Madrid poniendo a su disposición nuestro equipo de profesionales." textAlignment="JUSTIFY" wrappingWidth="107.09370279312134" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <Text layoutX="29.6" layoutY="37.54921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Asesoramos en materia laboral a Empresas, Pymes y Autónomos de la Comunidad de Madrid poniendo a su disposición nuestro equipo de profesionales." textAlignment="JUSTIFY" wrappingWidth="210.0936951637268" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="15.0" />
+                                                      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="155.06667175292966" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="120.0">
+                                                         <image>
+                                                            <Image url="@../../img/asesoria.jpg" />
+                                                         </image>
+                                                      </ImageView>
                                                    </children>
                                                 </AnchorPane>
                                              </content>
