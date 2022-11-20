@@ -242,7 +242,7 @@ public class AppController {
 		dniForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
 			if (Character.isDigit(e.getCharacter().charAt(0))) {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else if (Character.isAlphabetic(e.getCharacter().charAt(0))) {
+			} else if (Character.isUpperCase(e.getCharacter().charAt(0))) {
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
 			} else {
 				e.consume();
