@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.MainController">
+   <top>
+      <AnchorPane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #d1cfe2;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="login" fitHeight="20.0" fitWidth="20.0" layoutX="769.0" layoutY="3.0" onMouseClicked="#login" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/iconPerson.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TabPane layoutX="121.0" layoutY="24.0" prefHeight="323.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab closable="false" text="INICIO">
+                     <content>
+                        <AnchorPane prefHeight="590.0" prefWidth="800.0">
+                           <children>
+                              <ScrollPane layoutY="-4.0" prefHeight="550.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
+                                 <content>
+                                    <AnchorPane prefHeight="2161.0" prefWidth="790.0">
+                                       <children>
+                                          <AnchorPane layoutX="-6.0" layoutY="1794.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="-9.0">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="GESTORIA A" />
+                                             </children>
+                                          </AnchorPane>
+                                          <BarChart fx:id="chartEmpresas" categoryGap="4.0" layoutX="147.0" layoutY="32.0" title="Empresas que usan nuestros servicios">
+                                            <xAxis>
+                                              <CategoryAxis fx:id="tamEmpresa" label="Tamaño de empresas" side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis fx:id="numberEmpresa" label="Número de empresas" side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                          <Separator layoutX="19.0" layoutY="430.0" prefHeight="4.0" prefWidth="756.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children></AnchorPane>
+                     </content>
+                </Tab>
+                <Tab closable="false" text="SOBRE NOSOTROS">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                  <Tab closable="false" text="CONTACTO">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                           <children>
+                              <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="168.0" prefWidth="770.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
+                                       <children>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" smooth="false">
+                                             <image>
+                                                <Image url="@../../img/map.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <Label text="Gestoría JOD">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Jane Orosco Damulog">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="C. Tolosa, 2, 4">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text=" 28041, Madrid">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Email: info@gestoriajod.com" />
+                                          <Label text="Teléfono: 912 345 678" />
+                                          <Label text="Fax: 901 234 567" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
+                                       <HBox.margin>
+                                          <Insets left="50.0" right="50.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../img/direction.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <Label text="Cómo llegar">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Metro:" />
+                                          <Label text="Línea 6 Plaza Elíptica">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Bus:" />
+                                          <Label text="Líneas 116, 121, 131, 155, 60 y 6" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
+                                       <children>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../img/clock.png" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <Label text="Horarios">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Lunes a viernes:">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="09:00 - 14:00" />
+                                          <Label text="16:30 - 19:30">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin></Label>
+                                          <Label text="Horario de verano:">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="09:00 - 17:00" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <AnchorPane layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4ff" height="200.0" layoutX="295.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ImageView fitHeight="177.0" fitWidth="281.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/mapa.PNG" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,6 @@
+PARA INCICIAR SESIÓN:
+El nombre de usuario es: 1234
+La contraseña es: 1234
+
+ENLACE A GITHUB:
+https://github.com/sjanedam/interfaces_oroscojane/tree/Jane_Orosco_PracticaUnidad1-2

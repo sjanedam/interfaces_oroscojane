@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.TutorialController">
+   <top>
+      <MenuBar fx:id="menu" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Cerrar tutorial">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#exitTutorial" text="Cerrar tutorial" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Salir">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#exitApp" text="Salir" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Inicio de sesión">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="96.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <AnchorPane prefHeight="621.0" prefWidth="550.0">
+                                 <children>
+                                    <ImageView fitHeight="212.0" fitWidth="322.0" layoutX="103.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/login.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="154.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esta es la pantalla de inicio de sesión" />
+                                    <ImageView fitHeight="27.0" fitWidth="146.0" layoutX="228.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/loginExit.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="10.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El botón de salir que se encuentra en la esquina superior derecha hace que se salga de la aplicación." />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="175.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/botones.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="11.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aquí se introducen el nombre de usuario y la contraseña para poder entrar a la aplicación como tal. Como no existe una base de datos para cada usuario o contraseña usamos &quot;1234&quot; y &quot;1234&quot; como usuario y contraseña temporales para entrar en la aplicación. Si es correcto, se abre una nueva pantalla dentro de la aplicación, si no es correcta, se abre un dialog pidiendo que se vuelva a introducir los datos." textAlignment="JUSTIFY" wrappingWidth="527.783203125" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Aplicación 1">
+               <content>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="127.0" layoutY="65.0" pannable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <AnchorPane prefHeight="700.0" prefWidth="553.0">
+                                 <children>
+                                    <ImageView fitHeight="39.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/menubar.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="149.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En aplicación aparecen dos opciones: cerrar sesión, que al pulsar cierra la ventana actual y te lleva a la ventana de inicio de sesión, y salir de la aplicación, que al pulsar cierra todas las ventanas abiertas de la aplicación." textAlignment="JUSTIFY" wrappingWidth="395.921875" />
+                                    <Text layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En ayuda, te lleva a la ventana de tutorial donde explica un poco como funciona la aplicación." textAlignment="JUSTIFY" />
+                                    <ImageView fitHeight="376.0" fitWidth="554.0" layoutX="14.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/app.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="11.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cuando se abre la aplicación, aparece una pantalla y lo primero que se ve es una tabla donde se especifican los empleados de nuestra empresa. El mantenimiento de esta tabla se encuentra al lado, en la pestaña de 'Añadir empleados' donde se crea como un formulario donde se piden datos y se añaden a la tabla. (Si se cierra la aplicación, estos datos nuevos que se agreguen no se guardan en la tabla ya que ocurren una vez se hayan enviado los datos en el formulario)." textAlignment="JUSTIFY" wrappingWidth="531.91796875" />
+                                    <ImageView fitHeight="383.0" fitWidth="524.0" layoutX="14.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/formulario.PNG" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+            <Tab text="Aplicación 2">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="127.0" layoutY="65.0" pannable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <AnchorPane prefHeight="700.0" prefWidth="553.0">
+                                 <children>
+                                    <ImageView fitHeight="374.0" fitWidth="691.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/citas.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="17.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La aplicación también tiene un formulario para un formulario para añadir citas que usa la fecha (datepicker) y asunto (textarea)." textAlignment="JUSTIFY" wrappingWidth="519.966796875" />
+                                    <Text layoutX="17.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="También tiene una pestaña donde se hablaría un poco de la empresa y de qué va y cómo funciona sus distintos apartados (empresas, notaría, seguros, etc.)" textAlignment="JUSTIFY" wrappingWidth="519.966796875" />
+                                    <ImageView fitHeight="388.0" fitWidth="525.0" layoutX="14.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/about.PNG" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Aplicación 3">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <AnchorPane prefHeight="700.0" prefWidth="553.0">
+                                 <children>
+                                    <ImageView fitHeight="374.0" fitWidth="691.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/empresas.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Text layoutX="17.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quería crear como un apartado de cada especialización para poder ver qué hacían o de que se encargaban o qué información guardaban para su uso posterior. Solo implementé la de empresas en la que por la parte izquierda se visualiza las empresas con las que trabaja la gestoría y en la parte izquierda (sin funcionalidad) los datos que guardamos de las empresas con las que colaboramos." textAlignment="JUSTIFY" wrappingWidth="519.966796875" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
