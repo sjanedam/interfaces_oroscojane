@@ -20,11 +20,11 @@ public class MainPractica extends Application {
 			// Se añade el diseño principal a la escena
 			Scene scene = new Scene(appOverview);
 			primaryStage.setResizable(false);
-			primaryStage.setTitle("Gestoría S.L.");
+			primaryStage.setTitle("Gestoría DJO S.L.");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			primaryStage.getIcons().add(new Image("img/logo.png"));			
+			primaryStage.getIcons().add(new Image("img/home.png"));			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
