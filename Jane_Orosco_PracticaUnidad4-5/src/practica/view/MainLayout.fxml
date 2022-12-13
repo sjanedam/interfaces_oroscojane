@@ -21,9 +21,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="815.0" stylesheets="@css/maincss.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.MainController">
+<BorderPane prefHeight="600.0" prefWidth="815.0" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.MainController">
    <top>
-      <AnchorPane id="encabezado" prefHeight="25.0" prefWidth="600.0" stylesheets="@css/maincss.css" BorderPane.alignment="CENTER">
+      <AnchorPane id="encabezado" prefHeight="25.0" prefWidth="600.0" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="login" fitHeight="20.0" fitWidth="20.0" layoutX="786.0" layoutY="3.0" onMouseClicked="#login" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -218,7 +218,7 @@
                                                    </children></VBox>
                                              </children>
                                           </HBox>
-                                          <AnchorPane id="pie" layoutX="-3.0" layoutY="1770.0" prefHeight="200.0" prefWidth="816.0" stylesheets="@css/maincss.css">
+                                          <AnchorPane id="pie" layoutX="-3.0" layoutY="1770.0" prefHeight="200.0" prefWidth="816.0" stylesheets="@css/main.css">
                                              <children>
                                                 <Hyperlink layoutX="14.0" layoutY="14.0" text="Partners" />
                                                 <Hyperlink layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />
@@ -344,7 +344,7 @@
                            <children>
                               <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="168.0" prefWidth="770.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
                                  <children>
-                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/maincss.css">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/main.css">
                                        <children>
                                           <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" smooth="false">
                                              <image>
@@ -382,7 +382,7 @@
                                           <Label text="Fax: 901 234 567" />
                                        </children>
                                     </VBox>
-                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/maincss.css">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/main.css">
                                        <HBox.margin>
                                           <Insets left="50.0" right="50.0" />
                                        </HBox.margin>
@@ -413,7 +413,7 @@
                                           <Label text="Líneas 116, 121, 131, 155, 60 y 6" />
                                        </children>
                                     </VBox>
-                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/maincss.css">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
                                        <children>
                                           <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -459,7 +459,7 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <AnchorPane id="pie" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/maincss.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <AnchorPane id="pie" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Hyperlink layoutX="14.0" layoutY="14.0" text="Partners" />
                                     <Hyperlink layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />

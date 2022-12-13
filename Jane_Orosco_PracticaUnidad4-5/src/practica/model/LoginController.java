@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -35,6 +37,12 @@ public class LoginController {
 	@FXML
 	private Label usuario;
 	
+	@FXML
+	private ImageView exit;
+	
+	@FXML
+	private ImageView back;
+	
 	// Listener para el campo de texto y la contraseña
 		ChangeListener<Object> listener = new ChangeListener<Object>() {
 			@Override
@@ -54,8 +62,30 @@ public class LoginController {
 	/* ---------------- MÉTODOS ---------------- */
 	/** Salir de la aplicación */
 	@FXML
-	private void exitApp(ActionEvent event) {
+	private void exitApp(MouseEvent event) {
 		System.exit(0);
+	}
+	
+	/** Volver atrás */
+	@FXML
+	private void goBack(MouseEvent event) {
+		Stage appStage = (Stage) exit.getScene().getWindow();
+		appStage.close();
+		
+		Parent root;
+		
+		try {
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("practica/view/MainLayout.fxml"));
+			Stage loginStage = new Stage();
+			loginStage.setTitle("Gestoría DJO S.L.");
+			loginStage.setScene(new Scene(root));
+			loginStage.show();
+			loginStage.setResizable(false);
+			loginStage.getIcons().add(new Image("img/home.png"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/** Initialize */
@@ -64,6 +94,8 @@ public class LoginController {
 		// Cambiamos el cursor cuando esté dentro del botón de inicio de sesión
 		buttonLogin.setDisable(true);
 		buttonLogin.setCursor(Cursor.HAND);
+		exit.setCursor(Cursor.HAND);
+		back.setCursor(Cursor.HAND);
 		
 		userField.textProperty().addListener(listener);
 		passwordField.textProperty().addListener(listener);
@@ -113,7 +145,7 @@ public class LoginController {
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("practica/view/AppLayout.fxml"));
 			Stage loginStage = new Stage();
-			loginStage.setTitle("Aplicación");
+			loginStage.setTitle("Gestoría DJO S.L. Aplicación.");
 			loginStage.setScene(new Scene(root));
 			loginStage.show();
 			loginStage.setResizable(false);

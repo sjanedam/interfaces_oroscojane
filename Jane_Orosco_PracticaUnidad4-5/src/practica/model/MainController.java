@@ -113,7 +113,7 @@ public class MainController {
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("practica/view/LogInLayout.fxml"));
 			Stage loginStage = new Stage();
-			loginStage.setTitle("Iniciar sesión:");
+			loginStage.setTitle("Gestoría DJO S.L. Inicio de sesión.");
 			loginStage.setScene(new Scene(root));
 			loginStage.show();
 			loginStage.setResizable(false);
