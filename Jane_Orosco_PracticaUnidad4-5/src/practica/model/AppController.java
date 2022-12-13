@@ -204,18 +204,18 @@ public class AppController {
 		treeEmpresas.setRoot(rootItem);
 		
 		/* EVENTOS DE TECLADO */
-			// No permitir que la EDAD sean caracteres
+			// No permitir que la EDAD sean caracteres y solo sean dos dígitos
 		edadForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
-			if (!Character.isDigit(e.getCharacter().charAt(0))) {
+			if (!Character.isDigit(e.getCharacter().charAt(0)) || edadForm.getText().length() >= 2) {
 				e.consume();
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
 			} else {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
 			}
 		});
-			// No permitir que EL TELÉFONO sean caracteres
+			// No permitir que EL TELÉFONO sean caracteres y solo sean nueve dígitos
 		telForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
-			if (!Character.isDigit(e.getCharacter().charAt(0))) {
+			if (!Character.isDigit(e.getCharacter().charAt(0)) || telForm.getText().length() >= 9) {
 				e.consume();
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
 			} else {
@@ -235,11 +235,11 @@ public class AppController {
 		});
 			// No permitir que los DNI tengan caracteres especiales o numeros
 		dniForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
-			if (Character.isDigit(e.getCharacter().charAt(0))) {
+			if (Character.isDigit(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else if (Character.isAlphabetic(e.getCharacter().charAt(0))) {
+			} else if (Character.isAlphabetic(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else {
+			} else	{
 				e.consume();
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
 			}

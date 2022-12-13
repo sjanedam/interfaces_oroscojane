@@ -18,20 +18,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="2000.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.MainController">
+<BorderPane prefHeight="600.0" prefWidth="815.0" stylesheets="@css/maincss.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.MainController">
    <top>
-      <AnchorPane prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: #d1cfe2;" BorderPane.alignment="CENTER">
+      <AnchorPane id="encabezado" prefHeight="25.0" prefWidth="600.0" stylesheets="@css/maincss.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="login" fitHeight="20.0" fitWidth="20.0" layoutX="744.0" layoutY="3.0" onMouseClicked="#login" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="login" fitHeight="20.0" fitWidth="20.0" layoutX="786.0" layoutY="3.0" onMouseClicked="#login" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/login.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="exit" fitHeight="20.0" fitWidth="20.0" layoutX="774.0" layoutY="3.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="774.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="3.0">
+            <ImageView fx:id="exit" fitHeight="20.0" fitWidth="20.0" layoutX="18.0" layoutY="3.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.6000000000000014" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="777.2" AnchorPane.topAnchor="3.0">
                <image>
                   <Image url="@../../img/exit.png" />
                </image>
@@ -48,9 +47,9 @@
                      <content>
                         <AnchorPane prefHeight="590.0" prefWidth="800.0">
                            <children>
-                              <ScrollPane layoutY="-4.0" prefHeight="550.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
+                              <ScrollPane layoutY="-4.0" prefHeight="552.0" prefWidth="815.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
                                  <content>
-                                    <AnchorPane prefHeight="2161.0" prefWidth="790.0" style="-fx-background-color: white;">
+                                    <AnchorPane prefHeight="1923.0" prefWidth="798.0">
                                        <children>
                                           <Label layoutX="32.0" layoutY="14.0" text="GESTORÍA DJO MADRID">
                                              <font>
@@ -107,32 +106,120 @@
                                                 <Font name="Calibri Light Italic" size="14.0" />
                                              </font>
                                           </Text>
-                                          <BarChart fx:id="chartEmpresas" categoryGap="4.0" layoutX="147.0" layoutY="623.0" prefHeight="341.0" prefWidth="503.0" title="Empresas que usan nuestros servicios" AnchorPane.bottomAnchor="1197.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="623.0">
+                                          <BarChart fx:id="chartEmpresas" categoryGap="4.0" layoutX="147.0" layoutY="623.0" prefHeight="366.0" prefWidth="516.0" title="Empresas que usan nuestros servicios" AnchorPane.bottomAnchor="981.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="623.0">
                                             <xAxis>
-                                              <CategoryAxis fx:id="tamEmpresa" label="Tamaño de empresas" side="BOTTOM" />
+                                              <CategoryAxis fx:id="tamEmpresa" label="Tamaño de empresas" prefWidth="438.0" side="BOTTOM" />
                                             </xAxis>
                                             <yAxis>
                                               <NumberAxis label="Número de empresas" side="LEFT" />
                                             </yAxis>
                                           </BarChart>
-                                          <Separator layoutX="25.0" layoutY="974.0" prefHeight="4.0" prefWidth="756.0" />
-                                          <HBox alignment="CENTER" layoutX="25.0" layoutY="993.0" prefHeight="286.0" prefWidth="757.0">
+                                          <Separator layoutX="25.0" layoutY="994.0" prefHeight="4.0" prefWidth="756.0" />
+                                          <HBox alignment="CENTER" layoutX="16.0" layoutY="1050.0" prefHeight="286.0" prefWidth="757.0">
                                              <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0" />
-                                                <VBox prefHeight="200.0" prefWidth="100.0" />
-                                                <VBox prefHeight="200.0" prefWidth="100.0" />
+                                                <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/document.png" />
+                                                         </image>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </ImageView>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NOTARÍA">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin></Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nos encargamos del proceso completo en la gestión de documentos y escrituras notariales. Mantenemos puntualmente informado al cliente del estatus de la gestión notarial hasta su finalización." textAlignment="JUSTIFY" wrappingWidth="161.70007693767548" />
+                                                   </children></VBox>
+                                                <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/document.png" />
+                                                         </image>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </ImageView>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ABOGADOS">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin></Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nuestro ámbito de actuación se extiende al orden civil, penal, administrativo, laboral y mercantil en todo el territorio nacional, cubriendo desde el asesoramiento previo hasta la defensa en procedimientos judiciales." textAlignment="JUSTIFY" wrappingWidth="161.49373763799667" />
+                                                   </children></VBox>
+                                                <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/document.png" />
+                                                         </image>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </ImageView>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EMPRESAS">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin></Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ofrecemos un servicio integral de asesoramiento y gestión de la parte fiscal, contable y laboral de tu negocio, ya seas autónomo o empresa." textAlignment="JUSTIFY" wrappingWidth="163.0926558971405" />
+                                                   </children></VBox>
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER" layoutX="20.0" layoutY="1322.0" prefHeight="286.0" prefWidth="757.0">
+                                          <HBox alignment="CENTER" layoutX="16.0" layoutY="1377.0" prefHeight="286.0" prefWidth="757.0">
                                              <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0" />
-                                                <VBox prefHeight="200.0" prefWidth="100.0" />
-                                                <VBox prefHeight="200.0" prefWidth="100.0" />
+                                                <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/document.png" />
+                                                         </image>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </ImageView>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SEGUROS">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin></Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Le presentaremos la mejor solución y realizaremos un seguimiento y control permanente de las pólizas contratadas con el fin de mantenerlas actualizadas, recordándole ajustes varíen sus circunstancias personales o las del mercado." textAlignment="JUSTIFY" wrappingWidth="158.08709192276" />
+                                                   </children></VBox>
+                                                <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../img/document.png" />
+                                                         </image>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </ImageView>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ASESORÍA LABORAL">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin></Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Asesoramos en materia laboral a Empresas, Pymes y Autónomos de la Comunidad de Madrid poniendo a su disposición nuestro equipo de profesionales." textAlignment="JUSTIFY" wrappingWidth="165.803524851799" />
+                                                   </children></VBox>
                                              </children>
                                           </HBox>
-                                          <AnchorPane layoutX="-2.0" layoutY="1745.0" prefHeight="200.0" prefWidth="200.0">
+                                          <AnchorPane id="pie" layoutX="-3.0" layoutY="1770.0" prefHeight="200.0" prefWidth="816.0" stylesheets="@css/maincss.css">
                                              <children>
-                                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4ff" height="200.0" layoutX="295.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                 <Hyperlink layoutX="14.0" layoutY="14.0" text="Partners" />
                                                 <Hyperlink layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />
                                                 <Hyperlink layoutX="14.0" layoutY="60.0" text="Despachos con colaboración" />
@@ -188,7 +275,7 @@
                                                             <Font name="System Bold" size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button fx:id="scheduleButton11" mnemonicParsing="false" onAction="#openSchedule" style="-fx-background-color: #d1cfe2;" text="Horarios especiales">
+                                                      <Button fx:id="scheduleButton11" mnemonicParsing="false" onAction="#openSchedule" text="Horarios especiales">
                                                          <font>
                                                             <Font name="System Bold" size="10.0" />
                                                          </font>
@@ -239,12 +326,12 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="75.0" layoutY="14.0" prefHeight="59.0" prefWidth="650.0" text="La Gestoría DJO de Madrid se dedica desde 2018 al asesoramiento de empresas en temas fiscales, laborales, contables y jurídicos." textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="1873.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="14.0">
+                              <Label layoutX="88.0" layoutY="24.0" prefHeight="102.0" prefWidth="639.0" text="La Gestoría DJO de Madrid se dedica desde 2018 al asesoramiento de empresas en temas fiscales, laborales, contables y jurídicos." textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="420.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="24.0">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font name="Calibri" size="20.0" />
                                  </font></Label>
-                              <Slider fx:id="dateSlider" blockIncrement="1.0" layoutX="330.0" layoutY="73.0" majorTickUnit="1.0" max="2022.0" min="2018.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="75.0" />
-                              <Label fx:id="dateLabel" layoutX="220.0" layoutY="111.0" prefHeight="41.0" prefWidth="360.0" text="Al principio eran 7 empresas quienes confiaban en nuestro servicio." textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="110.0">
+                              <Slider fx:id="dateSlider" blockIncrement="1.0" layoutX="330.0" layoutY="113.0" majorTickUnit="1.0" max="2022.0" min="2018.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="113.0" />
+                              <Label fx:id="dateLabel" layoutX="220.0" layoutY="148.0" prefHeight="41.0" prefWidth="360.0" text="Al principio eran 7 empresas quienes confiaban en nuestro servicio." textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="148.0">
                                  <font>
                                     <Font name="System Italic" size="12.0" />
                                  </font></Label>
@@ -253,11 +340,11 @@
                 </Tab>
                   <Tab closable="false" text="CONTACTO">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="168.0" prefWidth="770.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
                                  <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/maincss.css">
                                        <children>
                                           <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" smooth="false">
                                              <image>
@@ -295,7 +382,7 @@
                                           <Label text="Fax: 901 234 567" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/maincss.css">
                                        <HBox.margin>
                                           <Insets left="50.0" right="50.0" />
                                        </HBox.margin>
@@ -326,7 +413,7 @@
                                           <Label text="Líneas 116, 121, 131, 155, 60 y 6" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/maincss.css">
                                        <children>
                                           <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -363,7 +450,7 @@
                                              <VBox.margin>
                                                 <Insets bottom="10.0" />
                                              </VBox.margin></Label>
-                                          <Button fx:id="scheduleButton" mnemonicParsing="false" onAction="#openSchedule" style="-fx-background-color: #d1cfe2;" text="Horarios especiales">
+                                          <Button fx:id="scheduleButton" mnemonicParsing="false" onAction="#openSchedule" text="Horarios especiales">
                                              <font>
                                                 <Font name="System Bold" size="10.0" />
                                              </font>
@@ -372,9 +459,8 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <AnchorPane layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <AnchorPane id="pie" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/maincss.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4ff" height="200.0" layoutX="295.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     <Hyperlink layoutX="14.0" layoutY="14.0" text="Partners" />
                                     <Hyperlink layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />
                                     <Hyperlink layoutX="14.0" layoutY="60.0" text="Despachos con colaboración" />
@@ -430,7 +516,7 @@
                                                 <Font name="System Bold" size="10.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="scheduleButton1" mnemonicParsing="false" onAction="#openSchedule" style="-fx-background-color: #d1cfe2;" text="Horarios especiales">
+                                          <Button fx:id="scheduleButton1" mnemonicParsing="false" onAction="#openSchedule" text="Horarios especiales">
                                              <font>
                                                 <Font name="System Bold" size="10.0" />
                                              </font>
