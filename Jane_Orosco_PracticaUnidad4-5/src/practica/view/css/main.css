@@ -1,12 +1,16 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
+
+
 #encabezado {
 	-fx-background-color: #F0EBCE;
+	-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
 }
 
 
 #pie {
 	-fx-background-color: #F0EBCE;
+	-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
 }
 
 #pie .button {
@@ -46,10 +50,6 @@ color: #914800
 	-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
 }
 
-#box .button {
-	-fx-background-color: lightgreen;
-}
-
 #box .button:hover {
 	
 }
@@ -60,5 +60,21 @@ hyperlink {
 
 tab {
 	-fx-font-weight: bold;
+	-fx-text-fill: #C58940;
+}
+
+#scheduleButton {
+	-fx-background-color: #C58940;
+	-fx-cursor: hand;
+	-fx-border-color: #735F32;
+	-fx-border-width: 1;
+	-fx-border-radius: 10 10 10 10;
+	-fx-background-radius: 10 10 10 10;
+}
+
+#scheduleButton:hover {
+	-fx-background-color: #F2D388;
+	-fx-effect: dropshadow(three-pass-box, #F2D388, 10, 0, 0, 0);
+	-fx-border-color: #E5BA73;
 	-fx-text-fill: #C58940;
 }

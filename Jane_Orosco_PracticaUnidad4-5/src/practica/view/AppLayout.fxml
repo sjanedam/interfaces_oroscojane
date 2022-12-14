@@ -51,7 +51,7 @@
 		</MenuBar>
 	</top>
 	<center>
-		<TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+		<TabPane prefHeight="498.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
 			<tabs>
 				<Tab text="Empleados">
                <content>
@@ -324,7 +324,7 @@
             </Tab>
             <Tab text="Empresas">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="488.0" prefWidth="1000.0">
                      <children>
                         <ListView fx:id="empresaLista" layoutX="14.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Listado de empresas:">
@@ -332,7 +332,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TreeView fx:id="treeEmpresas" layoutX="386.0" layoutY="38.0" prefHeight="476.0" prefWidth="569.0" />
+                        <TreeView fx:id="treeEmpresas" layoutX="386.0" layoutY="38.0" prefHeight="448.0" prefWidth="569.0" />
                         <Separator layoutX="235.0" layoutY="7.0" orientation="VERTICAL" prefHeight="330.0" prefWidth="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <Label layoutX="250.0" layoutY="14.0" text="Información:">
                            <font>
@@ -359,4 +359,12 @@
 			</tabs>
 		</TabPane>
 	</center>
+   <bottom>
+      <AnchorPane prefHeight="34.0" prefWidth="1000.0" style="-fx-background-color: lightgreen;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#claro" text="Claro" />
+            <Button layoutX="71.0" layoutY="4.0" mnemonicParsing="false" onAction="#oscuro" text="Oscuro" />
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>

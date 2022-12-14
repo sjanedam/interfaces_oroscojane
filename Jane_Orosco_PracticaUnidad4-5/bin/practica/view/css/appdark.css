@@ -1,0 +1,9 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+BorderPane {
+	-fx-background-color: black;
+}
+
+#tablaTrabajadores {
+	-fx-background-color: red;
+}

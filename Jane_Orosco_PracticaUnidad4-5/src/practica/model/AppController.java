@@ -459,6 +459,20 @@ public class AppController {
 			e.printStackTrace();
 		}
 	}
+	
+	/** Poner en modo oscuro */
+	@FXML
+	void claro(ActionEvent event) {
+		Scene panel = (Scene) tablaTrabajadores.getScene();
+		panel.getStylesheets().add("practica/view/css/appdark.css");
+	}
+	
+	/** Poner en modo claro */
+	@FXML
+	void oscuro(ActionEvent event) {
+		Scene panel = (Scene) tablaTrabajadores.getScene();
+		panel.getStylesheets().add("practica/view/css/applight.css");
+	}
 
 	/** Cerrar la aplicación */
 	@FXML

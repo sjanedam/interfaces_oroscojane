@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -37,8 +38,11 @@ public class MainController {
 	private BarChart<String, Integer> chartEmpresas;
 	@FXML
 	private CategoryAxis tamEmpresa;
-	
 	private ObservableList<String> tamEmpresas = FXCollections.observableArrayList();
+	
+	@FXML
+	private PieChart pieChart;
+	private ObservableList<PieChart.Data> numClientes  = FXCollections.observableArrayList();;
 	
     @FXML
     private Label dateLabel;
@@ -71,8 +75,17 @@ public class MainController {
 		chartEmpresas.getData().add(darDatosAnyo4());
 		chartEmpresas.getData().add(darDatosAnyo5());
 		
+		// Se añaden datos al PieChart
+		numClientes.add(new PieChart.Data("Empresas", 34));
+		numClientes.add(new PieChart.Data("Abogados", 102));
+		numClientes.add(new PieChart.Data("Notaría", 96));
+		numClientes.add(new PieChart.Data("Seguros", 84));
+		numClientes.add(new PieChart.Data("Asesoría", 76));
+		
+		pieChart = new PieChart(numClientes);
+		pieChart.setTitle("Cantidad que confia en nsotoros");
+		
 		dateSlider.valueProperty().addListener(new ChangeListener<Number>() {
-
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
 				double newnum= (double) arg1;
@@ -88,7 +101,6 @@ public class MainController {
 					dateLabel.textProperty().setValue("Actualmente son 33 empresas las que confían en nosotros y ¡la tuya es la próxima!");
 				}
 			}
-			
 		});
 		
 	}
@@ -113,8 +125,10 @@ public class MainController {
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("practica/view/LogInLayout.fxml"));
 			Stage loginStage = new Stage();
-			loginStage.setTitle("Gestoría DJO S.L. Inicio de sesión.");
-			loginStage.setScene(new Scene(root));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add("practica/view/css/login.css");
+			loginStage.setTitle("Gestoría DJO S.L.");
+			loginStage.setScene(scene);
 			loginStage.show();
 			loginStage.setResizable(false);
 			loginStage.getIcons().add(new Image("img/login.png"));
