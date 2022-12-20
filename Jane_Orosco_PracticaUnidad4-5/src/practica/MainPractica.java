@@ -17,8 +17,9 @@ public class MainPractica extends Application {
 			loader.setLocation(MainPractica.class.getResource("view/MainLayout.fxml"));
 			BorderPane appOverview = (BorderPane) loader.load();
 
-			// Se añade el diseño principal a la escena
+			// Se añade el diseño y el CSS principal a la escena
 			Scene scene = new Scene(appOverview);
+			scene.getStylesheets().add("practica/view/css/main.css");
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("Gestoría DJO S.L.");
 			primaryStage.setScene(scene);

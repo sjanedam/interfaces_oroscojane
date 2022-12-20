@@ -77,8 +77,10 @@ public class LoginController {
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource("practica/view/MainLayout.fxml"));
 			Stage loginStage = new Stage();
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add("practica/view/css/main.css");
 			loginStage.setTitle("Gestoría DJO S.L.");
-			loginStage.setScene(new Scene(root));
+			loginStage.setScene(scene);
 			loginStage.show();
 			loginStage.setResizable(false);
 			loginStage.getIcons().add(new Image("img/home.png"));
@@ -139,7 +141,7 @@ public class LoginController {
 		}
 	}
 
-	/** Método para abrir la nueva ventana */
+	/** Método para abrir la nueva ventana de inicio de sesión */
 	private void handleButtonLogin() {
 		Parent root;
 		try {

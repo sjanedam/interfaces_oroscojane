@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
@@ -34,7 +35,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import practica.MainPractica;
@@ -474,13 +474,13 @@ public class AppController {
 		panel.getStylesheets().add("practica/view/css/applight.css");
 	}
 
-	/** Cerrar la aplicación */
+	/** SALIR DE LA APLICACIÓN */
 	@FXML
 	private void exitApp(ActionEvent event) {
 		System.exit(0);
 	}
 
-	/** Cerrar sesión de la aplicación y que vuelva a la pantalla de login */
+	/** CERRAR SESIÓN DE LA APLICACIÓN Y QUE VUELVA A LA PANTALLA DEL LOGIN */
 	@FXML
 	private void cerrarSesion(ActionEvent event) {
 		Stage stage = (Stage) tablaTrabajadores.getScene().getWindow();
@@ -490,20 +490,17 @@ public class AppController {
 
 	/** Logout */
 	private void handleButtonLogout() {
-		Stage primaryStage = new Stage();
+		Parent root;
 		try {
-			// Cargamos el FXML con el diseño principal
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainPractica.class.getResource("view/LogInLayout.fxml"));
-			AnchorPane logInOverview = (AnchorPane) loader.load();
-
-			// Se añade el diseño principal a la escena
-			Scene scene = new Scene(logInOverview);
-			primaryStage.setResizable(false);
-			primaryStage.setTitle("PRÁCTICA UNIDAD 1-2. GESTORÍA.");
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			primaryStage.getIcons().add(new Image("img/logo.png"));
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("practica/view/LogInLayout.fxml"));
+			Stage loginStage = new Stage();
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add("practica/view/css/login.css");
+			loginStage.setTitle("Gestoría DJO S.L.");
+			loginStage.setScene(scene);
+			loginStage.show();
+			loginStage.setResizable(false);
+			loginStage.getIcons().add(new Image("img/login.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -22,9 +22,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="815.0" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.MainController">
+<BorderPane prefHeight="600.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practica.model.MainController">
    <top>
-      <AnchorPane id="encabezado" prefHeight="25.0" prefWidth="600.0" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
+      <AnchorPane id="encabezado" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="login" fitHeight="20.0" fitWidth="20.0" layoutX="786.0" layoutY="3.0" onMouseClicked="#login" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,13 +44,13 @@
          <children>
             <TabPane layoutX="121.0" layoutY="24.0" prefHeight="323.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <tabs>
-                <Tab closable="false" text="INICIO">
+                <Tab id="tab" closable="false" text="INICIO">
                      <content>
                         <AnchorPane prefHeight="590.0" prefWidth="800.0">
                            <children>
-                              <ScrollPane layoutY="-4.0" prefHeight="552.0" prefWidth="815.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
+                              <ScrollPane hbarPolicy="NEVER" layoutY="-4.0" prefHeight="552.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                                  <content>
-                                    <AnchorPane prefHeight="1923.0" prefWidth="798.0">
+                                    <AnchorPane prefHeight="1970.0" prefWidth="835.0">
                                        <children>
                                           <Label layoutX="32.0" layoutY="14.0" text="GESTORÍA DJO MADRID">
                                              <font>
@@ -116,7 +116,7 @@
                                             </yAxis>
                                           </BarChart>
                                           <Separator layoutX="25.0" layoutY="994.0" prefHeight="4.0" prefWidth="756.0" />
-                                          <HBox alignment="CENTER" layoutX="16.0" layoutY="1050.0" prefHeight="286.0" prefWidth="757.0">
+                                          <HBox alignment="CENTER" layoutX="36.0" layoutY="1052.0" prefHeight="286.0" prefWidth="757.0">
                                              <children>
                                                 <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
                                                    <HBox.margin>
@@ -177,7 +177,7 @@
                                                    </children></VBox>
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER" layoutX="16.0" layoutY="1377.0" prefHeight="286.0" prefWidth="757.0">
+                                          <HBox alignment="CENTER" layoutX="39.0" layoutY="1377.0" prefHeight="286.0" prefWidth="757.0">
                                              <children>
                                                 <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
                                                    <HBox.margin>
@@ -219,15 +219,15 @@
                                                    </children></VBox>
                                              </children>
                                           </HBox>
-                                          <AnchorPane id="pie" layoutX="-3.0" layoutY="1770.0" prefHeight="200.0" prefWidth="816.0" stylesheets="@css/main.css">
+                                          <AnchorPane id="pie" layoutX="-3.0" layoutY="1770.0" prefHeight="200.0" prefWidth="835.0">
                                              <children>
-                                                <Hyperlink layoutX="14.0" layoutY="14.0" text="Partners" />
-                                                <Hyperlink layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />
-                                                <Hyperlink layoutX="14.0" layoutY="60.0" text="Despachos con colaboración" />
-                                                <Hyperlink layoutX="14.0" layoutY="83.0" text="Webmail" />
-                                                <Hyperlink layoutX="14.0" layoutY="106.0" text="Contacto" />
+                                                <Hyperlink layoutX="42.0" layoutY="28.0" text="Partners" />
+                                                <Hyperlink layoutX="42.0" layoutY="51.0" text="Enlaces de interés" />
+                                                <Hyperlink layoutX="42.0" layoutY="74.0" text="Despachos con colaboración" />
+                                                <Hyperlink layoutX="42.0" layoutY="97.0" text="Webmail" />
+                                                <Hyperlink layoutX="42.0" layoutY="120.0" text="Contacto" />
                                                 <Separator layoutX="254.0" layoutY="9.0" orientation="VERTICAL" prefHeight="183.0" prefWidth="7.0" />
-                                                <VBox alignment="TOP_CENTER" layoutX="327.0" layoutY="14.0" prefHeight="150.0" prefWidth="146.0">
+                                                <VBox alignment="TOP_CENTER" layoutX="345.0" layoutY="16.0" prefHeight="150.0" prefWidth="146.0">
                                                    <children>
                                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -283,8 +283,8 @@
                                                       </Button>
                                                    </children>
                                                 </VBox>
-                                                <Separator layoutX="541.0" layoutY="9.0" orientation="VERTICAL" prefHeight="183.0" prefWidth="7.0" />
-                                                <VBox alignment="TOP_RIGHT" layoutX="606.0" layoutY="28.0" prefHeight="144.0" prefWidth="180.0">
+                                                <Separator layoutX="566.0" layoutY="9.0" orientation="VERTICAL" prefHeight="183.0" prefWidth="7.0" />
+                                                <VBox alignment="TOP_RIGHT" layoutX="608.0" layoutY="28.0" prefHeight="144.0" prefWidth="180.0">
                                                    <children>
                                                       <Label text="Gestoría JOD">
                                                          <VBox.margin>
@@ -323,7 +323,7 @@
                            </children></AnchorPane>
                      </content>
                 </Tab>
-                <Tab closable="false" text="SOBRE NOSOTROS">
+                <Tab id="tab" closable="false" text="SOBRE NOSOTROS">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -340,13 +340,13 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                  <Tab closable="false" text="CONTACTO">
+                  <Tab id="tab" closable="false" text="CONTACTO">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="168.0" prefWidth="770.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
                                  <children>
-                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/main.css">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
                                        <children>
                                           <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" smooth="false">
                                              <image>
@@ -384,7 +384,7 @@
                                           <Label text="Fax: 901 234 567" />
                                        </children>
                                     </VBox>
-                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0" stylesheets="@css/main.css">
+                                    <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="180.0">
                                        <HBox.margin>
                                           <Insets left="50.0" right="50.0" />
                                        </HBox.margin>
@@ -461,7 +461,7 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <AnchorPane id="pie" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@css/main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <AnchorPane id="pie" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
                                     <Hyperlink layoutX="14.0" layoutY="14.0" text="Partners" />
                                     <Hyperlink layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />
