@@ -15,6 +15,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -83,7 +85,7 @@ public class LoginController {
 			loginStage.setScene(scene);
 			loginStage.show();
 			loginStage.setResizable(false);
-			loginStage.getIcons().add(new Image("img/home.png"));
+			loginStage.getIcons().add(new Image("img/logo.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -112,6 +114,21 @@ public class LoginController {
 
 		// Validamos si la contraseña es correcta, en este caso usamos 1234 y 1234 tanto como usuario como contraseña
 		if (sNombreUsuario.equals("1234") && sContrasenya.toString().equals("1234")) {
+			//
+			userField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+				System.out.println(" -> " + e.getCode().toString());
+				if (e.getCode() == KeyCode.ENTER) {
+					handleButtonLogin();
+				}
+			});
+			
+			passwordField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+				System.out.println(" -> " + e.getCode().toString());
+				if (e.getCode() == KeyCode.ENTER) {
+					handleButtonLogin();
+				}
+			});
+			
 			// Si la contraseña es correcta, se cierra la ventana en la que nos encontramos
 			Stage stage = (Stage) buttonLogin.getScene().getWindow();
 			stage.close();

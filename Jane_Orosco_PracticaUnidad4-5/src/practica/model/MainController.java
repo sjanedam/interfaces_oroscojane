@@ -52,6 +52,7 @@ public class MainController {
     
     @FXML
     private Button scheduleButton;
+   
 
 	/* ---------------- MÉTODOS ---------------- */		
 	/** INICIALIZAR */
@@ -113,10 +114,6 @@ public class MainController {
 		horarioAlert.setHeaderText("Semana Santa");
 		horarioAlert.setContentText("08:00-17:00");
 		horarioAlert.showAndWait();
-		
-		/* DialogPane dialogPane = horarioAlert.getDialogPane();
-		dialogPane.getStylesheets().add(
-				getClass().getResource("practica/view/css/main.css").toExternalForm()); */
     }
 
 	/** PANTALLA DE LOGIN (INICIO DE SESIÓN) */

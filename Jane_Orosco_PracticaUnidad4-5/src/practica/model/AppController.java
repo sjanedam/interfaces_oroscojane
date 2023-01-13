@@ -460,18 +460,27 @@ public class AppController {
 		}
 	}
 	
-	/** Poner en modo oscuro */
+	/** Poner en modo claro */
 	@FXML
 	void claro(ActionEvent event) {
 		Scene panel = (Scene) tablaTrabajadores.getScene();
-		panel.getStylesheets().add("practica/view/css/appdark.css");
+		panel.getStylesheets().removeIf(style -> style.equals("practica/view/css/appdark.css"));
+		panel.getStylesheets().add("practica/view/css/applight.css");
 	}
 	
-	/** Poner en modo claro */
+	/** Poner en modo oscuro */
 	@FXML
 	void oscuro(ActionEvent event) {
 		Scene panel = (Scene) tablaTrabajadores.getScene();
-		panel.getStylesheets().add("practica/view/css/applight.css");
+		panel.getStylesheets().removeIf(style -> style.equals("practica/view/css/applight.css"));
+		panel.getStylesheets().add("practica/view/css/appdark.css");
+	}
+	
+	/** Poner en modo defecto */
+	@FXML
+	void defecto(ActionEvent event) {
+		Scene panel = (Scene) tablaTrabajadores.getScene();
+		panel.getStylesheets().removeIf(style -> style.equals("practica/view/css/appdark.css") || style.equals("practica/view/css/applight.css"));
 	}
 
 	/** SALIR DE LA APLICACIÓN */

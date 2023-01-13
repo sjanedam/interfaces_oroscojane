@@ -12,44 +12,36 @@ TabPane AnchorPane {
 	.tab-pane .tab-header-area .tab-header-background {
 	    -fx-opacity: 0;
 	}
-	
 	.tab-pane
 	{
 	    -fx-tab-min-width:90px;
 	}
-	
 	.tab{
 	    -fx-background-insets: 0 1 0 1,0,0;
 	}
 	.tab-pane .tab
 	{
 	    -fx-background-color: #e6e6e6;
-	
 	}
-	
 	.tab-pane .tab:selected
 	{
 	    -fx-background-color: #C58940;
 	    -fx-border-radius: 10;
 	}
-	
 	.tab .tab-label { 
 	    -fx-alignment: CENTER;
 	    -fx-text-fill: #828282;
 	    -fx-font-size: 12px;
 	    -fx-font-weight: bold;
 	}
-	
 	.tab:selected .tab-label { 
 	    -fx-alignment: CENTER;
 	    -fx-text-fill: #F2D388;
 	}
-	
 	.tab-pane:top *.tab-header-area {
 	    -fx-background-insets: 0, 0 0 1 0;
 	    -fx-padding:5 2 0 0;
 	}
-	
 	.tab-pane:focused .tab:selected .focus-indicator {
 	    -fx-border-width: 0 ;
 	    -fx-border-color: transparent;
@@ -60,7 +52,6 @@ TabPane AnchorPane {
 /* PARA CAMBIAR EL ESTILO DEL BARCHART */
 .chart {
     -fx-padding: 10px;
-    -fx-background-image: url("barchart.jpg");
 }
 .chart-content {
     -fx-padding: 30px;
@@ -84,27 +75,7 @@ TabPane AnchorPane {
  
 .chart-legend-item{
     -fx-text-fill: #191970;
-}
-
-
-/* 
-.dialog-pane {
-    -fx-background-color: black;
-}
-
-.dialog-pane .label {
-    -fx-text-fill: white;
-}
-
-.dialog-pane:header .header-panel {
-    -fx-background-color: black;
-}
-
-.dialog-pane:header .header-panel .label {
-    -fx-font-style: italic;
-    -fx-font-size: 2em;
-}
- */
+} 
 
 /* CON IDs */
 #encabezado {
@@ -132,23 +103,6 @@ TabPane AnchorPane {
 	-fx-border-color: #E5BA73;
 	-fx-text-fill: #C58940;
 }
-
-/* 
-color: #914800
-
-
-.axis {
-    /* -fx-font-size: 1.4em;    
-    -fx-tick-label-fill: #914800;
-    /* -fx-font-family: Tahoma;
-    -fx-tick-length: 20;
-    -fx-minor-tick-length: 10;
-}
- 
-.axis-label {
-   -fx-text-fill: #462300; 
-}
-*/
 
 #box {
 	-fx-background-color: #F0EBCE;
@@ -183,3 +137,4 @@ tab {
 	-fx-border-color: #E5BA73;
 	-fx-text-fill: #C58940;
 }
+

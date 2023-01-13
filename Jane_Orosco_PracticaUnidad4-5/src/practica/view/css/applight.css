@@ -1,4 +1,50 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Fondo para toda la aplicación */
+BorderPane {
+	-fx-background-color: radial-gradient(center 50% 50% , radius 200% , white, #ACB992);
+}
+
+
+/* PARA CADA PESTAÑA DE TAB PANE */
+	/* Este sirve para eliminar el fondo gris */
+	.tab-pane .tab-header-area .tab-header-background {
+	    -fx-opacity: 0;
+	}
+	.tab-pane
+	{
+	    -fx-tab-min-width:90px;
+	}
+	.tab{
+	    -fx-background-insets: 0 1 0 1,0,0;
+	}
+	.tab-pane .tab
+	{
+	    -fx-background-color: #e6e6e6;
+	}
+	.tab-pane .tab:selected
+	{
+	    -fx-background-color: #C58940;
+	    -fx-border-radius: 10;
+	}
+	.tab .tab-label { 
+	    -fx-alignment: CENTER;
+	    -fx-text-fill: #828282;
+	    -fx-font-size: 12px;
+	    -fx-font-weight: bold;
+	}
+	.tab:selected .tab-label { 
+	    -fx-alignment: CENTER;
+	    -fx-text-fill: #F2D388;
+	}
+	.tab-pane:top *.tab-header-area {
+	    -fx-background-insets: 0, 0 0 1 0;
+	    -fx-padding:5 2 0 0;
+	}
+	.tab-pane:focused .tab:selected .focus-indicator {
+	    -fx-border-width: 0 ;
+	    -fx-border-color: transparent;
+	    -fx-border-insets: 0;
+	    -fx-border-radius: 0;
+	}
 
 #tablaTrabajadores {
 	-fx-background-color: green;

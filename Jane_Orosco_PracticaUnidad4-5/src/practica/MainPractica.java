@@ -14,18 +14,20 @@ public class MainPractica extends Application {
 		try {
 			// Cargamos el FXML con el diseño principal
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainPractica.class.getResource("view/MainLayout.fxml"));
+			// ORIGINAL: loader.setLocation(MainPractica.class.getResource("view/MainLayout.fxml"));
+			loader.setLocation(MainPractica.class.getResource("view/AppLayout.fxml"));
 			BorderPane appOverview = (BorderPane) loader.load();
 
 			// Se añade el diseño y el CSS principal a la escena
 			Scene scene = new Scene(appOverview);
-			scene.getStylesheets().add("practica/view/css/main.css");
+			// ORGINAL: scene.getStylesheets().add("practica/view/css/main.css");
+			
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("Gestoría DJO S.L.");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			primaryStage.getIcons().add(new Image("img/home.png"));			
+			primaryStage.getIcons().add(new Image("img/logo.png"));			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
