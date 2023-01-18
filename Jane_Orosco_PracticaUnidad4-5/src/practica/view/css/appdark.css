@@ -1,6 +1,6 @@
 /* Fondo para toda la aplicación */
 BorderPane {
-	-fx-background-color: #6B728E;
+	-fx-background-color: #D8D8D8;
 }
 
 /* PARA CADA PESTAÑA DE TAB PANE */
@@ -26,7 +26,7 @@ BorderPane {
 	}
 	.tab .tab-label { 
 	    -fx-alignment: CENTER;
-	    -fx-text-fill: #D5CEA3;
+	    -fx-text-fill: white;
 	    -fx-font-size: 12px;
 	    -fx-font-weight: bold;
 	}
@@ -45,6 +45,93 @@ BorderPane {
 	    -fx-border-radius: 0;
 	}
 
-#tablaTrabajadores {
-	-fx-background-color: green;
+/* CAMBIAR LA TABLA */
+.table-view {
+	-fx-background-color: transparent;
 }
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+	
+    -fx-background-color: linear-gradient(to bottom, #380036, #0CBABA);
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label{
+	 -fx-text-fill: white;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-row-cell:hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: red;
+}
+.table-row-cell:odd{
+    -fx-background-color: #93f9b911;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:even{
+    -fx-background-color: #1dbbdd11;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+}
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #1dbbdd44, #93f9b944);
+}
+
+.table-row-cell:highlighted {
+    -fx-background-color: #81c483;
+    -fx-background-radius: 15px;
+}
+
+/* LISTVIEW */
+		.list-view {
+		    -fx-background-color: #232323;
+		}
+		
+		.list-view .list-cell:hover {
+		    -fx-background-color: #434343;
+		}
+		
+		.list-view .list-cell:selected {
+		    -fx-background-color: #434343;
+		}
+		
+		.list-view .list-cell {
+		    -fx-background-color: #232323;
+		    -fx-text-fill: white;
+		}
+		
+		.list-view .label {
+		    -fx-text-fill: white;
+		}

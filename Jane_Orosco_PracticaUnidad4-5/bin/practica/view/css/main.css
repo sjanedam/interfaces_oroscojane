@@ -52,6 +52,7 @@ TabPane AnchorPane {
 /* PARA CAMBIAR EL ESTILO DEL BARCHART */
 .chart {
     -fx-padding: 10px;
+    -fx-background-image: url("barchart.png"); 
 }
 .chart-content {
     -fx-padding: 30px;
@@ -138,3 +139,15 @@ tab {
 	-fx-text-fill: #C58940;
 }
 
+/* CAMBIAR EL ESTILO DEL SLIDER */
+.slider .track {
+	-fx-background-color:  #E5BA73;
+}
+
+.slider .tick {
+	-fx-text-fill: #C58940;
+}
+
+.slider .thumb {
+	-fx-background-color: #C58940;
+}

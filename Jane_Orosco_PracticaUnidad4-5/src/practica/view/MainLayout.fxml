@@ -95,7 +95,7 @@
                                           <Separator layoutX="20.0" layoutY="367.0" prefHeight="4.0" prefWidth="756.0" />
                                           <ImageView fitHeight="188.0" fitWidth="285.0" layoutX="253.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../img/empresa.png" />
+                                                <Image url="@../../img/logo.png" />
                                              </image>
                                           </ImageView>
                                           <Text layoutX="160.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A día de hoy estas, son las cantidades de empresas que confían en nuestros servicios:">

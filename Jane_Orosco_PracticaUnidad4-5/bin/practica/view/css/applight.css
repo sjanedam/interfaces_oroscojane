@@ -1,51 +1,169 @@
 /* Fondo para toda la aplicación */
-BorderPane {
-	-fx-background-color: radial-gradient(center 50% 50% , radius 200% , white, #ACB992);
-}
+		BorderPane {
+			-fx-background-color: radial-gradient(center 50% 50% , radius 200% , white, #ACB992);
+		}
 
+/* MENUBAR */
+		.menu-bar {
+			-fx-background-color: #C8DBBE;
+		}
+		
+		.menu-bar .label {
+			-fx-text-fill: black;
+		}
+		
+		.menu-bar .menu:hover {
+			-fx-background-color: #61764B;
+		}
+		.menu-bar .menu:hover .label {
+			-fx-text-fill: white;
+		}
+		.menu:showing {
+			-fx-background-color: #61764B;
+		}
+		.menu:showing .label {
+			-fx-text-fill: white;
+		}
+		
+		.menu-item {
+			-fx-background-color: #C8DBBE;
+		}
+		
+		.menu-item .label {
+			-fx-text-fill: white;
+		}
+		.menu-item:hover {
+			-fx-background-color: #61764B;
+		}
 
 /* PARA CADA PESTAÑA DE TAB PANE */
-	/* Este sirve para eliminar el fondo gris */
-	.tab-pane .tab-header-area .tab-header-background {
-	    -fx-opacity: 0;
-	}
-	.tab-pane
-	{
-	    -fx-tab-min-width:90px;
-	}
-	.tab{
-	    -fx-background-insets: 0 1 0 1,0,0;
-	}
-	.tab-pane .tab
-	{
-	    -fx-background-color: #e6e6e6;
-	}
-	.tab-pane .tab:selected
-	{
-	    -fx-background-color: #C58940;
-	    -fx-border-radius: 10;
-	}
-	.tab .tab-label { 
-	    -fx-alignment: CENTER;
-	    -fx-text-fill: #828282;
-	    -fx-font-size: 12px;
-	    -fx-font-weight: bold;
-	}
-	.tab:selected .tab-label { 
-	    -fx-alignment: CENTER;
-	    -fx-text-fill: #F2D388;
-	}
-	.tab-pane:top *.tab-header-area {
-	    -fx-background-insets: 0, 0 0 1 0;
-	    -fx-padding:5 2 0 0;
-	}
-	.tab-pane:focused .tab:selected .focus-indicator {
-	    -fx-border-width: 0 ;
-	    -fx-border-color: transparent;
-	    -fx-border-insets: 0;
-	    -fx-border-radius: 0;
-	}
+		/* Este sirve para eliminar el fondo gris */
+		.tab-pane .tab-header-area .tab-header-background {
+		    -fx-opacity: 0;
+		}
+		.tab-pane
+		{
+		    -fx-tab-min-width:90px;
+		}
+		.tab{
+		    -fx-background-insets: 0 1 0 1,0,0;
+		}
+		.tab-pane .tab
+		{
+		    -fx-background-color: #e6e6e6;
+		}
+		.tab-pane .tab:selected
+		{
+		    -fx-background-color: #61764B;
+		    -fx-border-radius: 10;
+		}
+		.tab .tab-label { 
+		    -fx-alignment: CENTER;
+		    -fx-text-fill: #828282;
+		    -fx-font-size: 12px;
+		    -fx-font-weight: bold;
+		}
+		.tab:selected .tab-label { 
+		    -fx-alignment: CENTER;
+		    -fx-text-fill: #C8DBBE;
+		}
+		.tab-pane:top *.tab-header-area {
+		    -fx-background-insets: 0, 0 0 1 0;
+		    -fx-padding:5 2 0 0;
+		}
+		.tab-pane:focused .tab:selected .focus-indicator {
+		    -fx-border-width: 0 ;
+		    -fx-border-color: transparent;
+		    -fx-border-insets: 0;
+		    -fx-border-radius: 0;
+		}
 
-#tablaTrabajadores {
-	-fx-background-color: green;
-}
+
+/* CAMBIAR LA TABLA */
+		.table-view {
+			-fx-background-color: transparent;
+		}
+		
+		.table-view .column-header-background .filler {
+		    -fx-background-color: transparent;
+		}
+		
+		.table-view .corner {
+		    -fx-background-color: transparent;
+		}
+		
+		.table-view .column-header-background{
+		    -fx-background-color: #C5D7BD;
+		}
+		
+		.table-view .column-header {
+		    -fx-background-color: transparent;
+		}
+		
+		.table-view .column-header .label{
+			 -fx-text-fill: #828282;
+		}
+		
+		.table-view .table-cell{
+		    -fx-border-color: transparent;
+		    -fx-padding: 2 0 2 10px;
+		}
+		.table-row-cell:odd{
+		    -fx-background-color: #F5F1DA;
+		    -fx-background-insets: 0, 0 0 1 0;
+		    -fx-padding: 0.0em;
+		}
+		.table-row-cell:even{
+		    -fx-background-color: #F4EEC7;
+		    -fx-background-insets: 0, 0 0 1 0;
+		    -fx-padding: 0.0em;
+		}
+		.table-row-cell:selected {
+		   -fx-background-color: #C58940; 
+		}
+		.table-row-cell:selected .text {
+		   -fx-fill: #F2D388;
+		   -fx-font-weight: bold;    
+		}
+		.table-row-cell:hover {
+		    -fx-text-background-color: #61764B;
+		    -fx-font-weight: bold;
+		}
+		
+		.table-view .virtual-flow .scroll-bar:vertical,
+		.table-view .virtual-flow .scroll-bar:vertical .track,
+		.table-view .virtual-flow .scroll-bar:vertical .track-background,
+		.table-view .virtual-flow .scroll-bar:horizontal,
+		.table-view .virtual-flow .scroll-bar:horizontal .track,
+		.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+		    -fx-background-color: transparent;
+		}
+		
+		.table-view .virtual-flow .scroll-bar:vertical .thumb{
+		    -fx-background-color:  linear-gradient(to bottom, #1dbbdd44, #93f9b944);
+		}
+		.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+		    -fx-background-color:  linear-gradient(to right, #1dbbdd44, #93f9b944);
+		}
+		
+/* LISTVIEW */
+		.list-view {
+		    -fx-background-color: #232323;
+		    -fx-border-color: none;
+		}
+		.list-view .list-cell:odd {
+			-fx-background-color: #F4EEC7;
+		}
+		.list-view .list-cell:even{
+			-fx-background-color: #F5F1DA;
+		}
+		.list-view .list-cell:hover {
+		    -fx-background-color: #9FB8AD;
+		    -fx-font-weight: bold;
+		    -fx-text-fill: white;
+		}
+		.list-view .list-cell:selected {
+		    -fx-background-color: #557571;
+		    -fx-text-fill: white;
+		    -fx-font-weight: bold;
+		}
