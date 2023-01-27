@@ -1,153 +1,140 @@
 /* FONDO PARA TODA LA APLCIACIÓN */
-AnchorPane {
-	-fx-background-color: radial-gradient(center 50% 50% , radius 200% , white, #ACB992);
-}
-
-TabPane AnchorPane {
-	    -fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
-}
-
-/* PARA CADA PESTAÑA DE TAB PANE */
-	/* Este sirve para eliminar el fondo gris */
-	.tab-pane .tab-header-area .tab-header-background {
-	    -fx-opacity: 0;
-	}
-	.tab-pane
-	{
-	    -fx-tab-min-width:90px;
-	}
-	.tab{
-	    -fx-background-insets: 0 1 0 1,0,0;
-	}
-	.tab-pane .tab
-	{
-	    -fx-background-color: #e6e6e6;
-	}
-	.tab-pane .tab:selected
-	{
-	    -fx-background-color: #C58940;
-	    -fx-border-radius: 10;
-	}
-	.tab .tab-label { 
-	    -fx-alignment: CENTER;
-	    -fx-text-fill: #828282;
-	    -fx-font-size: 12px;
-	    -fx-font-weight: bold;
-	}
-	.tab:selected .tab-label { 
-	    -fx-alignment: CENTER;
-	    -fx-text-fill: #F2D388;
-	}
-	.tab-pane:top *.tab-header-area {
-	    -fx-background-insets: 0, 0 0 1 0;
-	    -fx-padding:5 2 0 0;
-	}
-	.tab-pane:focused .tab:selected .focus-indicator {
-	    -fx-border-width: 0 ;
-	    -fx-border-color: transparent;
-	    -fx-border-insets: 0;
-	    -fx-border-radius: 0;
+	AnchorPane {
+		-fx-background-color: radial-gradient(center 50% 50% , radius 200% , white, #ACB992);
 	}
 	
-/* PARA CAMBIAR EL ESTILO DEL BARCHART */
-.chart {
-    -fx-padding: 10px;
-    -fx-background-image: url("barchart.png"); 
-}
-.chart-content {
-    -fx-padding: 30px;
-}
-.chart-title {
-  -fx-text-fill: #4682b4;
-  -fx-font-size: 1.6em;
-}
- 
-.axis-label {
-  -fx-text-fill: #4682b4;
-}
-.chart-legend {
-   -fx-background-color: transparent ;
-   -fx-padding: 20px;
-}
- 
-.chart-legend-item-symbol{
-   -fx-background-radius: 100;
-}
- 
-.chart-legend-item{
-    -fx-text-fill: #191970;
-} 
-
-/* CON IDs */
-#encabezado {
-	-fx-background-color: #F0EBCE;
-	-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
-}
-
-
-#pie {
-	-fx-background-color: #F0EBCE;
-	-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
-}
-
-#pie .button {
-	-fx-background-color: #C58940;
-	-fx-cursor: hand;
-	-fx-border-color: #735F32;
-	-fx-border-width: 1;
-	-fx-border-radius: 10 10 10 10;
-	-fx-background-radius: 10 10 10 10;
-}
-#pie .button:hover {
-	-fx-background-color: #F2D388;
-	-fx-effect: dropshadow(three-pass-box, #F2D388, 10, 0, 0, 0);
-	-fx-border-color: #E5BA73;
-	-fx-text-fill: #C58940;
-}
-
-#box {
-	-fx-background-color: #F0EBCE;
-	-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
-}
-
-#box .button:hover {
+	Text {
+		-fx-fill: #828282;
+	}
 	
-}
+	#content .label, .label  {
+		-fx-text-fill: #828282;
+	}
 
-hyperlink {
-	-fx-text-fill: #C58940;
-}
+	/* PARA CADA PESTAÑA DE TAB PANE */
+		/* Este sirve para eliminar el fondo gris */
+		.tab-pane .tab-header-area .tab-header-background {
+		    -fx-opacity: 0;
+		}
+		.tab-pane
+		{
+		    -fx-tab-min-width:90px;
+		}
+		.tab{
+		    -fx-background-insets: 0 1 0 1,0,0;
+		}
+		.tab-pane .tab
+		{
+		    -fx-background-color: #e6e6e6;
+		}
+		.tab-pane .tab:selected
+		{
+		    -fx-background-color: #C58940;
+		    -fx-border-radius: 10;
+		}
+		.tab .tab-label { 
+		    -fx-alignment: CENTER;
+		    -fx-text-fill: #828282;
+		    -fx-font-size: 12px;
+		    -fx-font-weight: bold;
+		}
+		.tab:selected .tab-label { 
+		    -fx-alignment: CENTER;
+		    -fx-text-fill: #F2D388;
+		}
+		.tab-pane:top *.tab-header-area {
+		    -fx-background-insets: 0, 0 0 1 0;
+		    -fx-padding:5 2 0 0;
+		}
+		.tab-pane:focused .tab:selected .focus-indicator {
+		    -fx-border-width: 0 ;
+		    -fx-border-color: transparent;
+		    -fx-border-insets: 0;
+		    -fx-border-radius: 0;
+		}
+	
+	/* PARA CAMBIAR EL ESTILO DEL BARCHART */
+		.chart {
+		    -fx-padding: 10px;
+		    -fx-background-color: radial-gradient(center 50% 50% , radius 200% , white, #ACB992);
+		    -fx-background-size: 100% auto;
+		}
+		.chart-content {
+		    -fx-padding: 10px;
+		}
+		.chart-title {
+		  -fx-text-fill: #4682b4;
+		  -fx-font-size: 1.6em;
+		}
+		.axis-label {
+		  -fx-text-fill: #4682b4;
+		}
+		.chart-legend {
+		   -fx-background-color: transparent ;
+		   -fx-padding: 10px;
+		}
+		.chart-legend-item-symbol{
+		   -fx-background-radius: 100;
+		}
+		.chart-legend-item{
+		    -fx-text-fill: #191970;
+		}
+		.separator {
+			-fx-background-color: transparent;
+			-fx-padding: 0.1;
+		}
 
-tab {
-	-fx-font-weight: bold;
-	-fx-text-fill: #C58940;
-}
+	/* CON IDs */
+		#encabezado {
+			-fx-background-color: #F0EBCE;
+			-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
+		}
+		
+		#pie {
+			-fx-background-color: #F0EBCE;
+			-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
+		}
+		#pie .button, #box .button {
+			-fx-background-color: #C58940;
+			-fx-cursor: hand;
+			-fx-border-color: #C58940;
+			-fx-border-width: 1;
+			-fx-border-radius: 10 10 10 10;
+			-fx-background-radius: 10 10 10 10;
+			-fx-text-fill: lightgrey;
+		}
+		#pie .button:hover, #box .button:hover {
+			-fx-background-color: #F2D388;
+			-fx-effect: dropshadow(three-pass-box, #F2D388, 10, 0, 0, 0);
+			-fx-border-color: #E5BA73;
+			-fx-text-fill: #C58940;
+		}
+		
+		#box {
+			-fx-background-color: #F0EBCE;
+			-fx-effect: dropshadow(three-pass-box, #735F32, 10, 0, 0, 0);
+		}
 
-#scheduleButton {
-	-fx-background-color: #C58940;
-	-fx-cursor: hand;
-	-fx-border-color: #735F32;
-	-fx-border-width: 1;
-	-fx-border-radius: 10 10 10 10;
-	-fx-background-radius: 10 10 10 10;
-}
+	/* HYPERLINK */
+		.hyperlink {
+			-fx-text-fill: #C58940;
+		}
+		.hyperlink:focused, .hyperlink:hover, .hyperlink:selected {
+			-fx-border-color: transparent;
+			-fx-text-fill: #F2D388;
+		}
+		.hyperlink:visited {
+			-fx-text-fill: #828282;
+			-fx-border-color: transparent;
+		}
 
-#scheduleButton:hover {
-	-fx-background-color: #F2D388;
-	-fx-effect: dropshadow(three-pass-box, #F2D388, 10, 0, 0, 0);
-	-fx-border-color: #E5BA73;
-	-fx-text-fill: #C58940;
-}
-
-/* CAMBIAR EL ESTILO DEL SLIDER */
-.slider .track {
-	-fx-background-color:  #E5BA73;
-}
-
-.slider .tick {
-	-fx-text-fill: #C58940;
-}
-
-.slider .thumb {
-	-fx-background-color: #C58940;
-}
+	/* CAMBIAR EL ESTILO DEL SLIDER */
+		.slider .track {
+			-fx-background-color:  #E5BA73;
+		}
+		.slider .tick {
+			-fx-text-fill: #C58940;
+		}
+		.slider .thumb {
+			-fx-background-color: #C58940;
+		}

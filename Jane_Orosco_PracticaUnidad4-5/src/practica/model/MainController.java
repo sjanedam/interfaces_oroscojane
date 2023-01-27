@@ -21,6 +21,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
@@ -113,6 +114,19 @@ public class MainController {
 		horarioAlert.setTitle("Horarios especiales");
 		horarioAlert.setHeaderText("Semana Santa");
 		horarioAlert.setContentText("08:00-17:00");
+		
+		// Cambiar imagen
+		horarioAlert.getDialogPane().setGraphic(new ImageView("img/horario.png"));
+		
+		// Cambiar logo
+		Stage stageAlert = (Stage) horarioAlert.getDialogPane().getScene().getWindow();
+		stageAlert.getIcons().add(new Image("img/horario.png"));
+
+		// Cambiar estilo del dialogo
+		DialogPane dialogPane = horarioAlert.getDialogPane();
+		dialogPane.getStylesheets().add(getClass().getResource("horarios.css").toExternalForm());
+		dialogPane.getStyleClass().add("dialog");
+		
 		horarioAlert.showAndWait();
     }
 
@@ -132,7 +146,7 @@ public class MainController {
 			loginStage.setScene(scene);
 			loginStage.show();
 			loginStage.setResizable(false);
-			loginStage.getIcons().add(new Image("img/login.png"));
+			loginStage.getIcons().add(new Image("img/logo.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();

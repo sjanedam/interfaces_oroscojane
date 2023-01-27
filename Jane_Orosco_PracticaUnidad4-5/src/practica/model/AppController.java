@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -25,6 +26,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SelectionMode;
@@ -116,7 +118,8 @@ public class AppController {
 			new Person("Lola Lolita", "12345678C", 23, "Hombre", "Notaría", 600900500, "lolalolita@mail.com"),
 			new Person("Jaime Fuentes", "12345678D", 33, "Hombre", "Abogados", 600900500, "jaimef@mail.com"),
 			new Person("María Pérez", "12345678E", 51, "Mujer", "Empresas", 600900500, "mariap@mail.com"),
-			new Person("Helena Torres", "12345678F", 43, "Mujer", "Asesoría Laboral", 600900500, "helenatorres@mail.com"),
+			new Person("Helena Torres", "12345678F", 43, "Mujer", "Asesoría Laboral", 600900500,
+					"helenatorres@mail.com"),
 			new Person("Claudia Torres", "12345678G", 37, "Mujer", "Empresas", 600900500, "clautorres@mail.com"));
 
 	/** Lista auxiliar para tablas de citas */
@@ -134,7 +137,8 @@ public class AppController {
 		tablaTrabajadores.setEditable(true);
 		tablaCitas.setEditable(true);
 
-		// Asociamos cada columna del table view a una propiedad de la clase Person y citas
+		// Asociamos cada columna del table view a una propiedad de la clase Person y
+		// citas
 		// Empleados
 		nombreCol.setCellValueFactory(new PropertyValueFactory<Person, String>("nombre"));
 		dniCol.setCellValueFactory(new PropertyValueFactory<Person, String>("dni"));
@@ -196,16 +200,17 @@ public class AppController {
 		auItem.getChildren().add(new TreeItem<String>("Empresa autónoma 3"));
 		rootItem.getChildren().add(auItem);
 
-		// Para que sea editable necesitamos especificar un CellFactory con el tipo que corresponda
+		// Para que sea editable necesitamos especificar un CellFactory con el tipo que
+		// corresponda
 		treeEmpresas.setCellFactory(TextFieldTreeCell.forTreeView());
 
 		// Expadimos por defecto el ítem raíz
 		rootItem.setExpanded(true);
 		treeEmpresas.setRoot(rootItem);
-		
+
 		/* EVENTOS DE TECLADO */
-			// No permitir que la EDAD sean caracteres y solo sean dos dígitos
-		edadForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
+		// No permitir que la EDAD sean caracteres y solo sean dos dígitos
+		edadForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
 			if (!Character.isDigit(e.getCharacter().charAt(0)) || edadForm.getText().length() >= 2) {
 				e.consume();
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
@@ -213,8 +218,8 @@ public class AppController {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
 			}
 		});
-			// No permitir que EL TELÉFONO sean caracteres y solo sean nueve dígitos
-		telForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
+		// No permitir que EL TELÉFONO sean caracteres y solo sean nueve dígitos
+		telForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
 			if (!Character.isDigit(e.getCharacter().charAt(0)) || telForm.getText().length() >= 9) {
 				e.consume();
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
@@ -222,24 +227,25 @@ public class AppController {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
 			}
 		});
-			// No permitir que los NOMBRES tengan caracteres especiales o numeros
-		nombreForm.addEventFilter(KeyEvent.KEY_TYPED, e-> {
+		// No permitir que los NOMBRES tengan caracteres especiales o numeros
+		nombreForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
 			if (Character.isWhitespace(e.getCharacter().charAt(0))) {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else if (Character.isDigit(e.getCharacter().charAt(0)) || !Character.isAlphabetic(e.getCharacter().charAt(0))) {
+			} else if (Character.isDigit(e.getCharacter().charAt(0))
+					|| !Character.isAlphabetic(e.getCharacter().charAt(0))) {
 				e.consume();
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
 			} else {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
 			}
 		});
-			// No permitir que los DNI tengan caracteres especiales o numeros
+		// No permitir que los DNI tengan caracteres especiales o numeros
 		dniForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
 			if (Character.isDigit(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
 			} else if (Character.isAlphabetic(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
 				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else	{
+			} else {
 				e.consume();
 				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
 			}
@@ -253,15 +259,32 @@ public class AppController {
 		// que no cambiará a diferencia del contenido
 		Alert infoAlert = new Alert(AlertType.ERROR);
 		infoAlert.setTitle("Aviso");
-		infoAlert.setHeaderText("Se ha produido un error.");
+		infoAlert.setHeaderText("¡Se ha producido un error!");
 		// Cambiamos el cursor mientras se encuentre dentro del Alert
 		infoAlert.getDialogPane().setCursor(Cursor.WAIT);
 
 		// Cambiamos el icono del aviso
 		Stage stageAlert = (Stage) infoAlert.getDialogPane().getScene().getWindow();
-		stageAlert.getIcons().add(new Image("img/fail.png"));
+		stageAlert.getIcons().add(new Image("img/warning.png"));
+		
+		// Cambiar la imagen del aviso
+		infoAlert.getDialogPane().setGraphic(new ImageView("img/warning.png"));
 
-		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape o enter, para salir habrá que pulsar el botón de aceptar
+		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u
+		// oscuro
+		Scene panel = (Scene) tablaTrabajadores.getScene();
+		if (panel.getStylesheets().toString().equals("[practica/view/css/applight.css]")) {
+			DialogPane dialogPane = infoAlert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("dialoglight.css").toExternalForm());
+			dialogPane.getStyleClass().add("dialog");
+		} else if (panel.getStylesheets().toString().equals("[practica/view/css/appdark.css]")) {
+			DialogPane dialogPane = infoAlert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("dialogdark.css").toExternalForm());
+			dialogPane.getStyleClass().add("dialog");
+		}
+
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
+		// o enter, para salir habrá que pulsar el botón de aceptar
 		stageAlert.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
 			System.out.println(" -> " + e.getCode().toString());
 			if (e.getCode() == ESCAPE) {
@@ -296,7 +319,8 @@ public class AppController {
 			int edadTrabajador = Integer.parseInt(edadT);
 			int telefonoTrabajador = Integer.parseInt(telT);
 			String sexoTrabajador = sexoElegido.getText();
-			datos.add(new Person(nombreTrabajador, dniTrabajador, edadTrabajador, sexoTrabajador, espTrabajador, telefonoTrabajador, emailTrabajador));
+			datos.add(new Person(nombreTrabajador, dniTrabajador, edadTrabajador, sexoTrabajador, espTrabajador,
+					telefonoTrabajador, emailTrabajador));
 
 			nombreForm.clear();
 			dniForm.clear();
@@ -321,12 +345,29 @@ public class AppController {
 		alert.setTitle("Aviso");
 		alert.setHeaderText("Esta acción es peligrosa.");
 		alert.setContentText("Una vez confirmes esta acción, los datos no podrán ser restaurados.");
+		
+		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u
+		// oscuro
+		Scene panel = (Scene) tablaTrabajadores.getScene();
+		if (panel.getStylesheets().toString().equals("[practica/view/css/applight.css]")) {
+			DialogPane dialogPane = alert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("dialoglight.css").toExternalForm());
+			dialogPane.getStyleClass().add("dialog");
+		} else if (panel.getStylesheets().toString().equals("[practica/view/css/appdark.css]")) {
+			DialogPane dialogPane = alert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("dialogdark.css").toExternalForm());
+			dialogPane.getStyleClass().add("dialog");
+		}
+		
+		// Imagen
+		alert.getDialogPane().setGraphic(new ImageView("img/help.png"));
 
 		// Icono
 		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-		stage.getIcons().add(new Image("img/warning.png"));
+		stage.getIcons().add(new Image("img/help.png"));
 
-		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape o enter, para salir habrá que pulsar el botón de aceptar
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
+		// o enter, para salir habrá que pulsar el botón de aceptar
 		stage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
 			System.out.println(" -> " + e.getCode().toString());
 			if (e.getCode() == ESCAPE) {
@@ -336,7 +377,7 @@ public class AppController {
 				e.consume();
 			}
 		});
-				
+
 		Optional<ButtonType> action = alert.showAndWait();
 		if (action.get() == ButtonType.OK) {
 			// Recorremos la lista
@@ -362,8 +403,24 @@ public class AppController {
 
 		// Cambiamos el icono del aviso
 		Stage stageAlert = (Stage) infoAlert.getDialogPane().getScene().getWindow();
-		stageAlert.getIcons().add(new Image("img/fail.png"));
+		stageAlert.getIcons().add(new Image("img/warning.png"));
+		
+		// Cambiar el grafico
+		infoAlert.getDialogPane().setGraphic(new ImageView("img/warning.png"));
 
+		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u
+				// oscuro
+				Scene panel = (Scene) tablaTrabajadores.getScene();
+				if (panel.getStylesheets().toString().equals("[practica/view/css/applight.css]")) {
+					DialogPane dialogPane = infoAlert.getDialogPane();
+					dialogPane.getStylesheets().add(getClass().getResource("dialoglight.css").toExternalForm());
+					dialogPane.getStyleClass().add("dialog");
+				} else if (panel.getStylesheets().toString().equals("[practica/view/css/appdark.css]")) {
+					DialogPane dialogPane = infoAlert.getDialogPane();
+					dialogPane.getStylesheets().add(getClass().getResource("dialogdark.css").toExternalForm());
+					dialogPane.getStyleClass().add("dialog");
+				}
+		
 		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
 		// o enter,
 		// para salir habrá que pulsar el botón de aceptar
@@ -376,7 +433,7 @@ public class AppController {
 				e.consume();
 			}
 		});
-		
+
 		if (fechaForm.getValue() == null || horaForm.getText().toString().trim().isEmpty()
 				|| asuntoForm.getText().toString().trim().isEmpty()) {
 			infoAlert.setContentText("Los campos no pueden estar vacíos. Introduzca los datos de nuevo.");
@@ -414,7 +471,23 @@ public class AppController {
 		// Icono
 		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 		stage.getIcons().add(new Image("img/warning.png"));
+		
+		// Gráfico
+		alert.getDialogPane().setGraphic(new ImageView("img/help.png"));
 
+		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u
+		// oscuro
+		Scene panel = (Scene) tablaTrabajadores.getScene();
+		if (panel.getStylesheets().toString().equals("[practica/view/css/applight.css]")) {
+			DialogPane dialogPane = alert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("dialoglight.css").toExternalForm());
+			dialogPane.getStyleClass().add("dialog");
+		} else if (panel.getStylesheets().toString().equals("[practica/view/css/appdark.css]")) {
+			DialogPane dialogPane = alert.getDialogPane();
+			dialogPane.getStylesheets().add(getClass().getResource("dialogdark.css").toExternalForm());
+			dialogPane.getStyleClass().add("dialog");
+		}
+		
 		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
 		// o enter,
 		// para salir habrá que pulsar el botón de aceptar
@@ -427,7 +500,7 @@ public class AppController {
 				e.consume();
 			}
 		});
-		
+
 		Optional<ButtonType> action = alert.showAndWait();
 		if (action.get() == ButtonType.OK) {
 			ObservableList<Citas> citaciones, allRows;
@@ -459,7 +532,7 @@ public class AppController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/** Poner en modo claro */
 	@FXML
 	void claro(ActionEvent event) {
@@ -467,7 +540,7 @@ public class AppController {
 		panel.getStylesheets().removeIf(style -> style.equals("practica/view/css/appdark.css"));
 		panel.getStylesheets().add("practica/view/css/applight.css");
 	}
-	
+
 	/** Poner en modo oscuro */
 	@FXML
 	void oscuro(ActionEvent event) {
@@ -475,12 +548,13 @@ public class AppController {
 		panel.getStylesheets().removeIf(style -> style.equals("practica/view/css/applight.css"));
 		panel.getStylesheets().add("practica/view/css/appdark.css");
 	}
-	
+
 	/** Poner en modo defecto */
 	@FXML
 	void defecto(ActionEvent event) {
 		Scene panel = (Scene) tablaTrabajadores.getScene();
-		panel.getStylesheets().removeIf(style -> style.equals("practica/view/css/appdark.css") || style.equals("practica/view/css/applight.css"));
+		panel.getStylesheets().removeIf(style -> style.equals("practica/view/css/appdark.css")
+				|| style.equals("practica/view/css/applight.css"));
 	}
 
 	/** SALIR DE LA APLICACIÓN */
@@ -509,7 +583,7 @@ public class AppController {
 			loginStage.setScene(scene);
 			loginStage.show();
 			loginStage.setResizable(false);
-			loginStage.getIcons().add(new Image("img/login.png"));
+			loginStage.getIcons().add(new Image("img/logo.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();

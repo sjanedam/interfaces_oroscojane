@@ -50,7 +50,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" layoutY="-4.0" prefHeight="552.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                                  <content>
-                                    <AnchorPane prefHeight="1970.0" prefWidth="835.0">
+                                    <AnchorPane id="content" prefHeight="1970.0" prefWidth="835.0">
                                        <children>
                                           <Label layoutX="32.0" layoutY="14.0" text="GESTORÍA DJO MADRID">
                                              <font>
@@ -115,7 +115,7 @@
                                               <NumberAxis label="Número de empresas" side="LEFT" />
                                             </yAxis>
                                           </BarChart>
-                                          <Separator layoutX="25.0" layoutY="994.0" prefHeight="4.0" prefWidth="756.0" />
+                                          <Separator layoutX="25.0" layoutY="994.0" prefHeight="31.0" prefWidth="756.0" />
                                           <HBox alignment="CENTER" layoutX="36.0" layoutY="1052.0" prefHeight="286.0" prefWidth="757.0">
                                              <children>
                                                 <VBox id="box" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -325,7 +325,7 @@
                 </Tab>
                 <Tab id="tab" closable="false" text="SOBRE NOSOTROS">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane id="content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="88.0" layoutY="24.0" prefHeight="102.0" prefWidth="639.0" text="La Gestoría DJO de Madrid se dedica desde 2018 al asesoramiento de empresas en temas fiscales, laborales, contables y jurídicos." textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="420.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="24.0">
                                  <font>
@@ -342,7 +342,7 @@
                 </Tab>
                   <Tab id="tab" closable="false" text="CONTACTO">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <AnchorPane id="content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="168.0" prefWidth="770.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
                                  <children>

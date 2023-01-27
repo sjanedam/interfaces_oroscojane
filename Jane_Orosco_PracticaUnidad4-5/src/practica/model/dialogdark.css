@@ -1,0 +1,37 @@
+.dialog{
+    -fx-background-color: #5B8FB9;
+}
+.dialog > *.button-bar > *.container{
+    -fx-background-color: #5B8FB9;
+}
+.dialog > *.label.content{
+    -fx-font-size: 14.0px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-text-fill: #e6e6e6;
+}
+.dialog:header *.header-panel{
+    -fx-background-color: #5B8FB9;
+}
+.dialog:header *.header-panel *.label{
+    -fx-font-size: 18.0px;
+    -fx-font-style: italic;
+    -fx-text-fill: #e6e6e6;
+}
+
+.dialog > *.button-bar *.button {
+	-fx-pref-width: 120.0px;
+	-fx-background-color: #A3C7D6;
+	-fx-cursor: hand;
+	-fx-border-color: transparent;
+	-fx-background-radius: 10 10 10 10;
+	-fx-text-fill: #0A2647;
+	-fx-font-weight: bold;
+}
+
+.dialog > *.button-bar *.button:hover {
+	-fx-background-color: #e6e6e6;
+	-fx-border-color: transparent;
+	-fx-text-fill: #828282;
+	-fx-font-weight: bold;
+}
