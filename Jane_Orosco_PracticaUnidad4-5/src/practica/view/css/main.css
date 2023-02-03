@@ -74,7 +74,7 @@
 		   -fx-padding: 10px;
 		}
 		.chart-legend-item-symbol{
-		   -fx-background-radius: 100;
+		   -fx-background-radius: 0;
 		}
 		.chart-legend-item{
 		    -fx-text-fill: #191970;
@@ -83,6 +83,44 @@
 			-fx-background-color: transparent;
 			-fx-padding: 0.1;
 		}
+		.default-color0.chart-bar { -fx-bar-fill: #F1A661; }
+		.default-color1.chart-bar { -fx-bar-fill: #ABC270; }
+		.default-color2.chart-bar { -fx-bar-fill: #DD4A48; }
+		.default-color3.chart-bar { -fx-bar-fill: #FFC286; }
+		.default-color4.chart-bar { -fx-bar-fill: #6D9886; }
+
+	/* CAMBIAR EL ESTILO DEL PIE CHART */
+	#piechart {
+		-fx-clockwise:false;
+		-fx-pie-label-visible: true;
+		-fx-label-line-length: 10;
+		-fx-start-angle: 90;
+		-fx-legend-side: right;
+	}
+	#piechart .chart-pie-label {
+		-fx-font-size: 10px;
+	}
+	#piechart .chart-pie-label-line {
+		-fx-fill: black;
+	}
+	#piechart .chart-legend-item-symbol {
+	    -fx-background-radius: 7px;
+	    -fx-padding: 7px;
+	}
+	.chart-legend {
+	    -fx-background-color: #F0EBCE;
+	    -fx-background-radius: 4px;
+	    -fx-border-color: #e6e6e6;
+	    -fx-border-width: 1;
+	    -fx-border-radius: 4px;
+	}
+	.default-color0.chart-pie { -fx-pie-color: #CDE990; }
+	.default-color1.chart-pie { -fx-pie-color: #FADA9D; }
+	.default-color2.chart-pie { -fx-pie-color: #FAAB78; }
+	.default-color3.chart-pie { -fx-pie-color: #F7A4A4; }
+	.default-color4.chart-pie { -fx-pie-color: #86C8BC; }
+	.default-color5.chart-pie { -fx-pie-color: #F9CEEE; }
+	
 
 	/* CON IDs */
 		#encabezado {
@@ -101,7 +139,7 @@
 			-fx-border-width: 1;
 			-fx-border-radius: 10 10 10 10;
 			-fx-background-radius: 10 10 10 10;
-			-fx-text-fill: lightgrey;
+			-fx-text-fill: white;
 		}
 		#pie .button:hover, #box .button:hover {
 			-fx-background-color: #F2D388;

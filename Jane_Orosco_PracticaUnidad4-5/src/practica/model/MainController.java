@@ -22,8 +22,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -43,7 +45,7 @@ public class MainController {
 	
 	@FXML
 	private PieChart pieChart;
-	private ObservableList<PieChart.Data> numClientes  = FXCollections.observableArrayList();;
+	private ObservableList<PieChart.Data> numClientes  = FXCollections.observableArrayList();
 	
     @FXML
     private Label dateLabel;
@@ -53,6 +55,9 @@ public class MainController {
     
     @FXML
     private Button scheduleButton;
+    
+    @FXML
+    private Hyperlink link;
    
 
 	/* ---------------- MÉTODOS ---------------- */		
@@ -78,14 +83,17 @@ public class MainController {
 		chartEmpresas.getData().add(darDatosAnyo5());
 		
 		// Se añaden datos al PieChart
-		numClientes.add(new PieChart.Data("Empresas", 34));
-		numClientes.add(new PieChart.Data("Abogados", 102));
-		numClientes.add(new PieChart.Data("Notaría", 96));
-		numClientes.add(new PieChart.Data("Seguros", 84));
-		numClientes.add(new PieChart.Data("Asesoría", 76));
+		numClientes.add(new PieChart.Data("Empresarios", 2));
+		numClientes.add(new PieChart.Data("Abogados", 3));
+		numClientes.add(new PieChart.Data("Notarios", 2));
+		numClientes.add(new PieChart.Data("Seguros", 2));
+		numClientes.add(new PieChart.Data("Aseguradores", 3));
+		numClientes.add(new PieChart.Data("Adminsitrativos", 6));
 		
-		pieChart = new PieChart(numClientes);
-		pieChart.setTitle("Cantidad que confia en nsotoros");
+		pieChart.setData(numClientes);
+		pieChart.setTitle("El número de profesionales que trabaja con nosotros");
+		pieChart.getData().forEach(this::addTooltip);
+		
 		
 		dateSlider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
@@ -105,6 +113,17 @@ public class MainController {
 			}
 		});
 		
+		link.setOnAction(e -> {
+			System.out.println("Se ha vistado la página ");
+		});
+		
+	}
+	
+	/** Añadir un tooltip a cada sección del pie chart */
+	public void addTooltip(PieChart.Data d) {
+		String msg = String.format("%s : %s", d.getName(), d.getPieValue());
+		Tooltip tp = new Tooltip(msg);
+		Tooltip.install(d.getNode(), tp);
 	}
 	
 	/** MOSTRAR UN DIÁLOGO PARA MOSTRAR HORARIOS ESPECIALES */

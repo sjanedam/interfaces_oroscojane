@@ -221,11 +221,11 @@
                                           </HBox>
                                           <AnchorPane id="pie" layoutX="-3.0" layoutY="1770.0" prefHeight="200.0" prefWidth="835.0">
                                              <children>
-                                                <Hyperlink layoutX="42.0" layoutY="28.0" text="Partners" />
-                                                <Hyperlink layoutX="42.0" layoutY="51.0" text="Enlaces de interés" />
-                                                <Hyperlink layoutX="42.0" layoutY="74.0" text="Despachos con colaboración" />
-                                                <Hyperlink layoutX="42.0" layoutY="97.0" text="Webmail" />
-                                                <Hyperlink layoutX="42.0" layoutY="120.0" text="Contacto" />
+                                                <Hyperlink fx:id="link" layoutX="42.0" layoutY="28.0" text="Partners" />
+                                                <Hyperlink fx:id="link" layoutX="42.0" layoutY="51.0" text="Enlaces de interés" />
+                                                <Hyperlink fx:id="link" layoutX="42.0" layoutY="74.0" text="Despachos con colaboración" />
+                                                <Hyperlink fx:id="link" layoutX="42.0" layoutY="97.0" text="Webmail" />
+                                                <Hyperlink fx:id="link" layoutX="42.0" layoutY="120.0" text="Contacto" />
                                                 <Separator layoutX="254.0" layoutY="9.0" orientation="VERTICAL" prefHeight="183.0" prefWidth="7.0" />
                                                 <VBox alignment="TOP_CENTER" layoutX="345.0" layoutY="16.0" prefHeight="150.0" prefWidth="146.0">
                                                    <children>
@@ -336,7 +336,7 @@
                                  <font>
                                     <Font name="System Italic" size="12.0" />
                                  </font></Label>
-                              <PieChart fx:id="pieChart" layoutX="166.0" layoutY="189.0" prefHeight="303.0" prefWidth="485.0" />
+                              <PieChart id="piechart" fx:id="pieChart" layoutX="166.0" layoutY="189.0" prefHeight="303.0" prefWidth="485.0" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -463,11 +463,11 @@
                               </HBox>
                               <AnchorPane id="pie" layoutY="346.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
-                                    <Hyperlink layoutX="14.0" layoutY="14.0" text="Partners" />
-                                    <Hyperlink layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />
-                                    <Hyperlink layoutX="14.0" layoutY="60.0" text="Despachos con colaboración" />
-                                    <Hyperlink layoutX="14.0" layoutY="83.0" text="Webmail" />
-                                    <Hyperlink layoutX="14.0" layoutY="106.0" text="Contacto" />
+                                    <Hyperlink fx:id="link" layoutX="14.0" layoutY="14.0" text="Partners" />
+                                    <Hyperlink fx:id="link" layoutX="14.0" layoutY="37.0" text="Enlaces de interés" />
+                                    <Hyperlink fx:id="link" layoutX="14.0" layoutY="60.0" text="Despachos con colaboración" />
+                                    <Hyperlink fx:id="link" layoutX="14.0" layoutY="83.0" text="Webmail" />
+                                    <Hyperlink fx:id="link" layoutX="14.0" layoutY="106.0" text="Contacto" />
                                     <Separator layoutX="254.0" layoutY="9.0" orientation="VERTICAL" prefHeight="183.0" prefWidth="7.0" />
                                     <VBox alignment="TOP_CENTER" layoutX="327.0" layoutY="14.0" prefHeight="150.0" prefWidth="146.0">
                                        <children>
