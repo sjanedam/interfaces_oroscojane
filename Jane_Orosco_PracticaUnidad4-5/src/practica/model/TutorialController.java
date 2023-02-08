@@ -15,74 +15,112 @@ public class TutorialController {
 	private MenuBar menu;
 
 	@FXML
-	private Pagination paginationMain;
-	@FXML
 	private Pagination paginationLogin;
 	@FXML
 	private Pagination paginationApp;
 	
 	@FXML
-	private ProgressBar progressbarMain;
-	@FXML
 	private ProgressBar progressbarLogin;
 	@FXML
 	private ProgressBar progressbarApp;
 
-	private ArrayList<String> imagenes = new ArrayList<String>();
 	private ArrayList<String> loginImgs = new ArrayList<String>();
+	private ArrayList<String> appImgs = new ArrayList<>();
 	
+	/**
+	 * 
+	 */
 	@FXML
 	void initialize() {
 		// Se inicializa el listado
-		this.imagenes(this.imagenes);
 		this.login(this.loginImgs);
+		this.app(this.appImgs);
 
 		// Se calcula el número de páginas en función de los ítems del listado
 		// Si el número no es divisor del número de ítems, entonces se añade una página
-		paginationMain.setPageCount(imagenes.size());
 		paginationLogin.setPageCount(loginImgs.size());
+		paginationApp.setPageCount(appImgs.size());
 
-		paginationMain.setPageFactory(n -> new ImageView(imagenes.get(n)));
 		paginationLogin.setPageFactory(n-> new ImageView(loginImgs.get(n)));
+		paginationApp.setPageFactory(s-> new ImageView(appImgs.get(s)));
 
 		// Cada vez que se selecciona una página se cambia la barra de progreso
-		paginationMain.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
-			progressbarMain.setProgress((newValue.doubleValue() + 1) / paginationMain.getPageCount());
-		});
 		paginationLogin.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
 			progressbarLogin.setProgress((newValue.doubleValue() + 1) / paginationLogin.getPageCount());
+		});
+		paginationApp.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
+			progressbarApp.setProgress((newValue.doubleValue() + 1) / paginationApp.getPageCount());
 		});
 
 
 		// Valor inicial de la barra de progreso
-		progressbarMain.setProgress((double) 1 / paginationMain.getPageCount());
 		progressbarLogin.setProgress((double) 1 / paginationLogin.getPageCount());
-		
+		progressbarApp.setProgress((double) 1 / paginationApp.getPageCount()); 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void exitApp(ActionEvent event) {
 		System.exit(0);
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void exitTutorial(ActionEvent event) {
 		Stage stage = (Stage) menu.getScene().getWindow();
 		stage.close();
 	}
 	
-	private void imagenes(ArrayList<String> imagenes) {
-		imagenes.add("img\\atras.png");
-		imagenes.add("img\\atras.png");
-		imagenes.add("img\\atras.png");
-		imagenes.add("img\\atras.png");
-		imagenes.add("img\\atras.png");
-		imagenes.add("img\\atras.png");
-		imagenes.add("img\\atras.png");
-		imagenes.add("img\\atras.png");
+	/**
+	 * 
+	 * @param appImgs
+	 */
+	private void app(ArrayList<String> appImgs) {
+		appImgs.add("img\\tutorial\\app\\app.png");
+		appImgs.add("img\\tutorial\\app\\menu.jpg");
+		appImgs.add("img\\tutorial\\app\\menuapp1.jpg");
+		appImgs.add("img\\tutorial\\app\\menuapp2.jpg");
+		appImgs.add("img\\tutorial\\app\\menuapp3.jpg");
+		appImgs.add("img\\tutorial\\app\\tutorial.jpg");
+		appImgs.add("img\\tutorial\\app\\estilodefault.jpg");
+		appImgs.add("img\\tutorial\\app\\estiloclaro1.jpg");
+		appImgs.add("img\\tutorial\\app\\estiloclaro2.jpg");
+		appImgs.add("img\\tutorial\\app\\estilooscuro1.jpg");
+		appImgs.add("img\\tutorial\\app\\estilooscuro2.jpg");
+		
+		appImgs.add("img\\tutorial\\app\\tab1.jpg");
+		appImgs.add("img\\tutorial\\app\\tab1table.jpg");
+		appImgs.add("img\\tutorial\\app\\tab1add.jpg");
+		appImgs.add("img\\tutorial\\app\\tab1addaviso.jpg");
+		appImgs.add("img\\tutorial\\app\\tab1deleteaviso.jpg");
+		appImgs.add("img\\tutorial\\app\\tab2.jpg");
+		appImgs.add("img\\tutorial\\app\\tab2table.jpg");
+		appImgs.add("img\\tutorial\\app\\tab2add.jpg");
+		appImgs.add("img\\tutorial\\app\\tab2addaviso.jpg");
+		appImgs.add("img\\tutorial\\app\\tab2deleteaviso.jpg");
+		appImgs.add("img\\tutorial\\app\\tab3.jpg");
+		appImgs.add("img\\tutorial\\app\\tab4.jpg");
+
 	}
 	
+	/**
+	 * 
+	 * @param loginImgs
+	 */
 	private void login(ArrayList<String> loginImgs) {
-		loginImgs.add("img\\tutorial\\login.png");
+		loginImgs.add("img\\tutorial\\login\\login.png");
+		loginImgs.add("img\\tutorial\\login\\cerrarsesion.jpg");
+		loginImgs.add("img\\tutorial\\login\\exit.jpg");
+		loginImgs.add("img\\tutorial\\login\\user.jpg");
+		loginImgs.add("img\\tutorial\\login\\password.jpg");
+		loginImgs.add("img\\tutorial\\login\\userfail.jpg");
+		loginImgs.add("img\\tutorial\\login\\passwordfail.jpg");
+		loginImgs.add("img\\tutorial\\login\\login.jpg");
 	}
 }

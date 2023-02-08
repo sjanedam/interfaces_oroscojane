@@ -5,6 +5,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedAreaChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -50,7 +51,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" layoutY="-4.0" prefHeight="552.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                                  <content>
-                                    <AnchorPane id="content" prefHeight="1970.0" prefWidth="835.0">
+                                    <AnchorPane id="content" prefHeight="2435.0" prefWidth="835.0">
                                        <children>
                                           <Label layoutX="32.0" layoutY="14.0" text="GESTORÍA DJO MADRID">
                                              <font>
@@ -107,7 +108,7 @@
                                                 <Font name="Calibri Light Italic" size="14.0" />
                                              </font>
                                           </Text>
-                                          <BarChart fx:id="chartEmpresas" categoryGap="4.0" layoutX="147.0" layoutY="623.0" prefHeight="366.0" prefWidth="516.0" title="Empresas que usan nuestros servicios" AnchorPane.bottomAnchor="981.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="623.0">
+                                          <BarChart fx:id="chartEmpresas" categoryGap="4.0" layoutX="147.0" layoutY="623.0" prefHeight="367.0" prefWidth="548.0" title="Empresas que usan nuestros servicios" AnchorPane.bottomAnchor="1445.0" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="623.0">
                                             <xAxis>
                                               <CategoryAxis fx:id="tamEmpresa" label="Tamaño de empresas" prefWidth="438.0" side="BOTTOM" />
                                             </xAxis>
@@ -219,7 +220,7 @@
                                                    </children></VBox>
                                              </children>
                                           </HBox>
-                                          <AnchorPane id="pie" layoutX="-3.0" layoutY="1770.0" prefHeight="200.0" prefWidth="835.0">
+                                          <AnchorPane id="pie" layoutX="-1.0" layoutY="2235.0" prefHeight="200.0" prefWidth="835.0">
                                              <children>
                                                 <Hyperlink fx:id="link" layoutX="42.0" layoutY="28.0" text="Partners" />
                                                 <Hyperlink fx:id="link" layoutX="42.0" layoutY="51.0" text="Enlaces de interés" />
@@ -316,6 +317,15 @@
                                                 </VBox>
                                              </children>
                                           </AnchorPane>
+                                          <StackedAreaChart fx:id="stackArea" layoutX="171.0" layoutY="1785.0">
+                                            <xAxis>
+                                              <NumberAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </StackedAreaChart>
+                                          <Separator layoutX="43.0" layoutY="1699.0" prefHeight="31.0" prefWidth="756.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>

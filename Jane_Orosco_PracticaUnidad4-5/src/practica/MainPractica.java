@@ -15,7 +15,7 @@ public class MainPractica extends Application {
 			// Cargamos el FXML con el diseño principal
 			FXMLLoader loader = new FXMLLoader();
 			// ORIGINAL: loader.setLocation(MainPractica.class.getResource("view/MainLayout.fxml"));
-			loader.setLocation(MainPractica.class.getResource("view/TutorialLayout.fxml"));
+			loader.setLocation(MainPractica.class.getResource("view/AppLayout.fxml"));
 			BorderPane appOverview = (BorderPane) loader.load();
 
 			// Se añade el diseño y el CSS principal a la escena

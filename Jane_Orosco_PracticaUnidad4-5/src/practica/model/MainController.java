@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedAreaChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -45,7 +46,10 @@ public class MainController {
 	
 	@FXML
 	private PieChart pieChart;
-	private ObservableList<PieChart.Data> numClientes  = FXCollections.observableArrayList();
+	private ObservableList<PieChart.Data> numProfesionales = FXCollections.observableArrayList();
+	
+	@FXML
+	private StackedAreaChart<Integer, Integer> stackArea;
 	
     @FXML
     private Label dateLabel;
@@ -83,14 +87,14 @@ public class MainController {
 		chartEmpresas.getData().add(darDatosAnyo5());
 		
 		// Se añaden datos al PieChart
-		numClientes.add(new PieChart.Data("Empresarios", 2));
-		numClientes.add(new PieChart.Data("Abogados", 3));
-		numClientes.add(new PieChart.Data("Notarios", 2));
-		numClientes.add(new PieChart.Data("Seguros", 2));
-		numClientes.add(new PieChart.Data("Aseguradores", 3));
-		numClientes.add(new PieChart.Data("Adminsitrativos", 6));
+		numProfesionales.add(new PieChart.Data("Empresarios", 2));
+		numProfesionales.add(new PieChart.Data("Abogados", 3));
+		numProfesionales.add(new PieChart.Data("Notarios", 2));
+		numProfesionales.add(new PieChart.Data("Seguros", 2));
+		numProfesionales.add(new PieChart.Data("Aseguradores", 3));
+		numProfesionales.add(new PieChart.Data("Adminsitrativos", 6));
 		
-		pieChart.setData(numClientes);
+		pieChart.setData(numProfesionales);
 		pieChart.setTitle("El número de profesionales que trabaja con nosotros");
 		pieChart.getData().forEach(this::addTooltip);
 		
@@ -117,7 +121,103 @@ public class MainController {
 			System.out.println("Se ha vistado la página ");
 		});
 		
+		// STACKED AREA CHART
+		initStackedAreaChart();
+		
 	}
+	
+	/** Añadir datos al Stacked Area Chart */
+	private void initStackedAreaChart() {
+        // Para los StackedAreaChart, SceneBuilder obliga a emplear dos NumberAxis cuyos valores deben 
+        // ser Number o tipos que heredan de este
+        
+        // Se crean dos series con datos
+        XYChart.Series<Integer, Integer> anyo18 = new XYChart.Series<Integer, Integer>();
+        anyo18.setName("Año 2018");
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(1, 10));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(2, 13));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(3, 17));        
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(4, 20));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(5, 25));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(6, 29));        
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(7, 31));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(8, 33));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(9, 33));        
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(10, 36));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(11, 38));
+        anyo18.getData().add(new XYChart.Data<Integer, Integer>(12, 43));
+        
+        XYChart.Series<Integer, Integer> anyo19 = new XYChart.Series<Integer, Integer>();
+        anyo19.setName("Año 2019");
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(1, 46));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(2, 49));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(3, 52));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(4, 59));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(5, 61));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(6, 62));        
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(7, 63));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(8, 65));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(9, 69));      
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(10, 70));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(11, 73));
+        anyo19.getData().add(new XYChart.Data<Integer, Integer>(12, 79));
+        
+        XYChart.Series<Integer, Integer> anyo20 = new XYChart.Series<Integer, Integer>();
+        anyo20.setName("Año 2020");
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(1, 81));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(2, 84));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(3, 89));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(4, 93));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(5, 99));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(6, 109));        
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(7, 124));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(8, 129));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(9, 133));      
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(10, 134));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(11, 140));
+        anyo20.getData().add(new XYChart.Data<Integer, Integer>(12, 145));
+        
+        XYChart.Series<Integer, Integer> anyo21 = new XYChart.Series<Integer, Integer>();
+        anyo21.setName("Año 2021");
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(1, 147));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(2, 139));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(3, 136));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(4, 133));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(5, 149));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(6, 151));        
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(7, 155));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(8, 159));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(9, 164));      
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(10, 160));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(11, 170));
+        anyo21.getData().add(new XYChart.Data<Integer, Integer>(12, 178));
+        
+        XYChart.Series<Integer, Integer> anyo22 = new XYChart.Series<Integer, Integer>();
+        anyo22.setName("Año 2022");
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(1, 178));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(2, 179));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(3, 187));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(4, 180));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(5, 171));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(6, 179));        
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(7, 188));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(8, 201));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(9, 207));      
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(10, 210));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(11, 218));
+        anyo22.getData().add(new XYChart.Data<Integer, Integer>(12, 225));
+        
+        // Se añaden las series al gráfico de tipo AreaChart
+        stackArea.getData().add(anyo18);
+        stackArea.getData().add(anyo19);
+        stackArea.getData().add(anyo20);
+        stackArea.getData().add(anyo21);
+        stackArea.getData().add(anyo22);
+        
+        stackArea.getXAxis().setLabel("Mes");
+        stackArea.getYAxis().setLabel("Número de clientes");
+        stackArea.setTitle("Total de clientes que usan nuestros servicios");
+    }
 	
 	/** Añadir un tooltip a cada sección del pie chart */
 	public void addTooltip(PieChart.Data d) {
