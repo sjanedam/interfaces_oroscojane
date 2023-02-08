@@ -121,6 +121,21 @@
 	.default-color4.chart-pie { -fx-pie-color: #86C8BC; }
 	.default-color5.chart-pie { -fx-pie-color: #F9CEEE; }
 	
+	/* CAMBIAR EL ESTILO DEL STACKED AREA CHART */
+	.default-color0.chart-series-area-line, .default-color0.chart-series-area-fill { -fx-stroke: #fb8500; }
+	.default-color1.chart-series-area-line, .default-color1.chart-series-area-fill { -fx-stroke: #219ebc; }
+	.default-color2.chart-series-area-line, .default-color2.chart-series-area-fill { -fx-stroke: #606c38; }
+	.default-color3.chart-series-area-line, .default-color3.chart-series-area-fill { -fx-stroke: #ffafcc; }
+	.default-color4.chart-series-area-line, .default-color4.chart-series-area-fill { -fx-stroke: #e63946; }
+	
+	
+	.default-color0.chart-area-symbol { -fx-background-color: #fb8500, #fb8500; }
+	.default-color1.chart-area-symbol { -fx-background-color: #219ebc, #219ebc; }
+	.default-color2.chart-area-symbol { -fx-background-color: #606c38, #606c38; }
+	.default-color3.chart-area-symbol { -fx-background-color: #ffafcc, #ffafcc; }
+	.default-color4.chart-area-symbol { -fx-background-color: #e63946, #e63946; }
+	
+	.chart-area-symbol { -fx-background-radius: 10 }
 
 	/* CON IDs */
 		#encabezado {
