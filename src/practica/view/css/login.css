@@ -1,0 +1,29 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+AnchorPane {
+	-fx-background-color: radial-gradient(center 50% 50% , radius 200% , white, #ACB992);
+}
+
+AnchorPane AnchorPane {
+	-fx-background-color: #F0EBCE;
+	-fx-effect: dropshadow(three-pass-box, BLACK, 10, 0, 0, 0);
+}
+
+VBox Label {
+}
+
+Button {
+	-fx-background-color: #4E6C50;
+	-fx-cursor: hand;
+	-fx-border-color: #395144;
+	-fx-border-width: 1;
+	-fx-border-radius: 10 10 10 10;
+	-fx-background-radius: 10 10 10 10;
+	-fx-text-fill: white;
+}
+
+Button:hover {
+	-fx-background-color: #C8DBBE;
+	-fx-border-color: #E5BA73;
+	-fx-text-fill: black;
+}
