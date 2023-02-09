@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"img"},{"l":"img.tutorial.app"},{"l":"img.tutorial.login"},{"l":"practica"},{"l":"practica.model"},{"l":"practica.view"},{"l":"practica.view.css"}];updateSearchResults();
