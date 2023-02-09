@@ -21,9 +21,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Controlador del Inicio de sesión
+ * @author Jane Orosco
+ *
+ */
 public class LoginController {
-	
-	/** CONTROLES Y MÉTODOS DE LA PANTALLA DE LOGIN */
+	/* INICIALIZAMOS LAR VARIABLES @FXML */
 	@FXML
 	private Button buttonLogin;
 
@@ -62,13 +66,19 @@ public class LoginController {
 	
 
 	/* ---------------- MÉTODOS ---------------- */
-	/** Salir de la aplicación */
+	/**
+	 * MÉTODO QUE NOS HACE SALIR DE TODA LA APLICACIÓN
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	private void exitApp(MouseEvent event) {
 		System.exit(0);
 	}
 	
-	/** Volver atrás */
+	/**
+	 * MÉTODO PARA VOLVER ATRÁS (EN ESTE CASO LA PÁGINA PRINCIPAL, MAIN)
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	private void goBack(MouseEvent event) {
 		Stage appStage = (Stage) exit.getScene().getWindow();
@@ -92,7 +102,10 @@ public class LoginController {
 		}
 	}
 
-	/** Initialize */
+	/**
+	 * MÉTODO EN EL QUE SE INICIALIZAN LOS DATOS
+	 * 
+	 */
 	@FXML
 	public void initialize() {
 		// Cambiamos el cursor cuando esté dentro del botón de inicio de sesión
@@ -105,7 +118,10 @@ public class LoginController {
 		passwordField.textProperty().addListener(listener);
 	}
 	
-	/** Iniciar sesión en la aplicación */
+	/**
+	 * MÉTODO QUE NOS ABRE LA VENTANA DE APLICACIÓN Y CIERRA LA VENTANA ACTUAL
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	public void abrirNuevaVentana(ActionEvent event) {	
 		// Recogemos los datos de los Fields usando GetText y transformándolos a String
@@ -114,7 +130,6 @@ public class LoginController {
 
 		// Validamos si la contraseña es correcta, en este caso usamos 1234 y 1234 tanto como usuario como contraseña
 		if (sNombreUsuario.equals("1234") && sContrasenya.toString().equals("1234")) {
-			//
 			userField.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
 				System.out.println(" -> " + e.getCode().toString());
 				if (e.getCode() == KeyCode.ENTER) {
@@ -158,7 +173,9 @@ public class LoginController {
 		}
 	}
 
-	/** Método para abrir la nueva ventana de inicio de sesión */
+	/**
+	 * Método para abrir la nueva ventana después de iniciar sesión
+	 */
 	private void handleButtonLogin() {
 		Parent root;
 		try {

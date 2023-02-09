@@ -32,7 +32,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="450.0" layoutY="3.0" prefHeight="20.0" prefWidth="200.0" text="GUÍA PARA USAR LA APLICACIÓN" AnchorPane.bottomAnchor="702.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="3.0">
+            <Label id="guia" layoutX="450.0" layoutY="3.0" prefHeight="20.0" prefWidth="200.0" text="GUÍA PARA USAR LA APLICACIÓN" AnchorPane.bottomAnchor="702.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="3.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

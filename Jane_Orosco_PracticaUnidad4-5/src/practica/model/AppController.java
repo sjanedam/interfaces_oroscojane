@@ -41,225 +41,245 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import practica.MainPractica;
 
+/**
+ * Controlador de la aplicación para el mantenimiento de las tablas
+ * @author Jane Orosco
+ * 
+ */
 public class AppController {
-	/** CONTROLES Y MÉTODOS DE LA PANTALLA DE APLICACIÓN */
-	// TABLA EMPLEADOS
-	@FXML
-	private TableView<Person> tablaTrabajadores;
-	@FXML
-	private TableColumn<Person, String> nombreCol;
-	@FXML
-	private TableColumn<Person, String> dniCol;
-	@FXML
-	private TableColumn<Person, Integer> edadCol;
-	@FXML
-	private TableColumn<Person, String> sexoCol;
-	@FXML
-	private TableColumn<Person, String> espCol;
-	@FXML
-	private TableColumn<Person, Integer> telCol;
-	@FXML
-	private TableColumn<Person, String> emailCol;
+	/* INICIALIZAMOS LAR VARIABLES @FXML */
+		/*---------------- PESTAÑA EMPLEADOS ----------------*/
+		// TABLA EMPLEADOS
+			@FXML
+			private TableView<Person> tablaTrabajadores;
+			@FXML
+			private TableColumn<Person, String> nombreCol;
+			@FXML
+			private TableColumn<Person, String> dniCol;
+			@FXML
+			private TableColumn<Person, Integer> edadCol;
+			@FXML
+			private TableColumn<Person, String> sexoCol;
+			@FXML
+			private TableColumn<Person, String> espCol;
+			@FXML
+			private TableColumn<Person, Integer> telCol;
+			@FXML
+			private TableColumn<Person, String> emailCol;
+		
+		// FORMULARIO DE EMPLEADOS (AÑADIR DATOS A LA TABLA)
+			@FXML
+			private TextField nombreForm;
+			@FXML
+			private TextField dniForm;
+			@FXML
+			private TextField edadForm;
+			@FXML
+			ToggleGroup sexo;
+			@FXML
+			private ChoiceBox<String> espChoiceBox;
+			@FXML
+			private TextField telForm;
+			@FXML
+			private TextField emailForm;
+		
+		// FORMULARIOS DE EMPLEADOS (ELIMINAR DATOS DE LA TABLA)
+			@FXML
+			private TextField removeDniForm;
 
-	// TABLA CITACIONES
-	@FXML
-	private TableView<Citas> tablaCitas;
-	@FXML
-	private TableColumn<Citas, String> asuntoCol;
-	@FXML
-	private TableColumn<Citas, String> horaCol;
-	@FXML
-	private TableColumn<Citas, String> fechaCol;
-	@FXML
-	private TableColumn<Citas, String> prioridadCol;
+		/*---------------- PESTAÑA CITACIONES ----------------*/
+		// TABLA CITACIONES
+			@FXML
+			private TableView<Citas> tablaCitas;
+			@FXML
+			private TableColumn<Citas, String> asuntoCol;
+			@FXML
+			private TableColumn<Citas, String> horaCol;
+			@FXML
+			private TableColumn<Citas, String> fechaCol;
+			@FXML
+			private TableColumn<Citas, String> prioridadCol;
+	
+		// FORMULARIOS CITACIONES
+			@FXML
+			private DatePicker fechaForm;
+			@FXML
+			private TextField horaForm;
+			@FXML
+			private TextArea asuntoForm;
+			@FXML
+			private ComboBox<String> prioComboBox;
 
-	// FORMULARIOS Empleados
-	@FXML
-	private TextField nombreForm;
-	@FXML
-	private TextField dniForm;
-	@FXML
-	private TextField edadForm;
-	@FXML
-	ToggleGroup sexo;
-	@FXML
-	private ChoiceBox<String> espChoiceBox;
-	@FXML
-	private TextField telForm;
-	@FXML
-	private TextField emailForm;
-
-	// FORMULARIOS Eliminar empleados
-	@FXML
-	private TextField removeDniForm;
-
-	// FORMULARIOS Citas
-	@FXML
-	private DatePicker fechaForm;
-	@FXML
-	private TextField horaForm;
-	@FXML
-	private TextArea asuntoForm;
-	@FXML
-	private ComboBox<String> prioComboBox;
-
-	// LISTVIEW
+	/*---------------- LISTVIEW ----------------*/
 	@FXML
 	private ListView<String> empresaLista;
 
-	// TREEVIEW
+	/*---------------- TREEVIEW ----------------*/
 	@FXML
 	private TreeView<String> treeEmpresas;
 
-	/** Lista auxiliar para tabla de empleados */
+	/*---------------- Lista auxiliar para tabla de empleados ----------------*/
 	private ObservableList<Person> datos = FXCollections.observableArrayList(
 			new Person("Ana Ramos", "12345678A", 27, "Mujer", "Notaría", 600909050, "anaramos@mail.com"),
 			new Person("Alan Brief", "12345678B", 43, "Hombre", "Seguros", 600900500, "alan@mail.com"),
 			new Person("Lola Lolita", "12345678C", 23, "Hombre", "Notaría", 600900500, "lolalolita@mail.com"),
 			new Person("Jaime Fuentes", "12345678D", 33, "Hombre", "Abogados", 600900500, "jaimef@mail.com"),
 			new Person("María Pérez", "12345678E", 51, "Mujer", "Empresas", 600900500, "mariap@mail.com"),
-			new Person("Helena Torres", "12345678F", 43, "Mujer", "Asesoría Laboral", 600900500,
-					"helenatorres@mail.com"),
+			new Person("Helena Torres", "12345678F", 43, "Mujer", "Asesoría Laboral", 600900500, "helenatorres@mail.com"),
 			new Person("Claudia Torres", "12345678G", 37, "Mujer", "Empresas", 600900500, "clautorres@mail.com"));
 
-	/** Lista auxiliar para tablas de citas */
+	/*---------------- Lista auxiliar para tablas de citas ----------------*/
 	private ObservableList<Citas> citaciones = FXCollections.observableArrayList(
 			new Citas("26/10/2022", "10:30AM", "Herencia", "Alta"),
 			new Citas("27/10/2022", "11:00AM", "Seguro de coche", "Baja"),
 			new Citas("27/10/2022", "12:00PM", "Herencia", "Media"));
 
 	/* ---------------- MÉTODOS ---------------- */
-	/** Inicializar los datos */
+	/**
+	 * MÉTODO EN EL QUE SE INICIALIZAN LOS DATOS
+	 * 
+	 */
 	@FXML
 	private void initialize() {
-
-		// INFORMACIÓN DE LA TABLA
+		/* ---------------- TABLA EMPLEADOS ---------------- */
 		tablaTrabajadores.setEditable(true);
-		tablaCitas.setEditable(true);
-
-		// Asociamos cada columna del table view a una propiedad de la clase Person y
-		// citas
-		// Empleados
-		nombreCol.setCellValueFactory(new PropertyValueFactory<Person, String>("nombre"));
-		dniCol.setCellValueFactory(new PropertyValueFactory<Person, String>("dni"));
-		edadCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("edad"));
-		sexoCol.setCellValueFactory(new PropertyValueFactory<Person, String>("sexo"));
-		espCol.setCellValueFactory(new PropertyValueFactory<Person, String>("especializacion"));
-		telCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("telefono"));
-		emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("email"));
-
-		// Citas
-		fechaCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("fecha"));
-		horaCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("hora"));
-		asuntoCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("asunto"));
-		prioridadCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("prioridad"));
-
+			
+		// Asociamos cada columna del table view a una propiedad de la clase Person
+			nombreCol.setCellValueFactory(new PropertyValueFactory<Person, String>("nombre"));
+			dniCol.setCellValueFactory(new PropertyValueFactory<Person, String>("dni"));
+			edadCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("edad"));
+			sexoCol.setCellValueFactory(new PropertyValueFactory<Person, String>("sexo"));
+			espCol.setCellValueFactory(new PropertyValueFactory<Person, String>("especializacion"));
+			telCol.setCellValueFactory(new PropertyValueFactory<Person, Integer>("telefono"));
+			emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("email"));
+		
 		// Se rellena la tabla con objetos de la clase Person
-		tablaTrabajadores.setItems(datos);
+			tablaTrabajadores.setItems(datos);
+		
+			
+		/* ---------------- TABLA CITACIONES ---------------- */
+		tablaCitas.setEditable(true);
+		
+		// Asociamos cada columna del table view a una propiedad de la clase Citas
+			fechaCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("fecha"));
+			horaCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("hora"));
+			asuntoCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("asunto"));
+			prioridadCol.setCellValueFactory(new PropertyValueFactory<Citas, String>("prioridad"));
+
+		// Se rellena la tabla con objetos de la clase Citas
 		tablaCitas.setItems(citaciones);
 
-		// INFORMACIÓN DE LOS CHOICEBOX
+		
+		/* ---------------- INFORMACIÓN DE LOS CHOICE BOX ---------------- */
 		espChoiceBox.getItems().addAll("Notaría", "Abogados", "Seguros", "Empresas", "Asesoría laboral");
 		espChoiceBox.setValue("Selecciona la especialización.");
+		
+			// Listener
 		espChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			System.out.println("Antiguo -> " + oldValue + "\n" + "Nuevo -> " + newValue);
 		});
 
-		// INFORMACIÓN DEL COMBO BOC
+		/* ---------------- INFORMACIÓN DEL COMBO BOX ---------------- */
 		prioComboBox.getItems().addAll("Baja", "Alta", "Media", "Urgente");
 		prioComboBox.setValue("Prioridad...");
+			// Listener
 		prioComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			System.out.println("Antiguo -> " + oldValue + "\n" + "Nuevo -> " + newValue);
 		});
 
-		// LISTVIEW
+		/* ---------------- LISTVIEW ---------------- */
 		empresaLista.getItems().addAll("Empresa autónoma 1", "Empresa pequeña S. L.", "Empresa grande S. A.",
 				"Empresa pequeña S. L. U.", "Empresa autónoma 2", "Empresa autónoma 3");
 		empresaLista.setCellFactory(TextFieldListCell.forListView());
 		empresaLista.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-		// TREEVIEW
-		// RAÍZ
-		TreeItem<String> rootItem = new TreeItem<String>("Información de empresas:");
+		/* ---------------- TREEVIEW ---------------- */
+			// RAÍZ
+			TreeItem<String> rootItem = new TreeItem<String>("Información de empresas:");
 
-		// Ítem de primer nivel
-		TreeItem<String> saItem = new TreeItem<String>("S. A.");
-		saItem.getChildren().add(new TreeItem<String>("Empresa grande S. A."));
-		rootItem.getChildren().add(saItem);
+			// Ítem de primer nivel
+			TreeItem<String> saItem = new TreeItem<String>("S. A.");
+			saItem.getChildren().add(new TreeItem<String>("Empresa grande S. A."));
+			rootItem.getChildren().add(saItem);
 
-		// Otro ítem de primer nivel
-		TreeItem<String> slItem = new TreeItem<String>("S. L.");
-		slItem.getChildren().add(new TreeItem<String>("Empresa pequeña S. L."));
-		slItem.getChildren().add(new TreeItem<String>("Empresa pequeña S. L. U."));
-		rootItem.getChildren().add(slItem);
+			// Otro ítem de primer nivel
+			TreeItem<String> slItem = new TreeItem<String>("S. L.");
+			slItem.getChildren().add(new TreeItem<String>("Empresa pequeña S. L."));
+			slItem.getChildren().add(new TreeItem<String>("Empresa pequeña S. L. U."));
+			rootItem.getChildren().add(slItem);
 
-		// Otro ítem de primer nivel
-		TreeItem<String> auItem = new TreeItem<String>("Autónomos.");
-		auItem.getChildren().add(new TreeItem<String>("Empresa autónoma 1"));
-		auItem.getChildren().add(new TreeItem<String>("Empresa autónoma 2"));
-		auItem.getChildren().add(new TreeItem<String>("Empresa autónoma 3"));
-		rootItem.getChildren().add(auItem);
+			// Otro ítem de primer nivel
+			TreeItem<String> auItem = new TreeItem<String>("Autónomos.");
+			auItem.getChildren().add(new TreeItem<String>("Empresa autónoma 1"));
+			auItem.getChildren().add(new TreeItem<String>("Empresa autónoma 2"));
+			auItem.getChildren().add(new TreeItem<String>("Empresa autónoma 3"));
+			rootItem.getChildren().add(auItem);
 
-		// Para que sea editable necesitamos especificar un CellFactory con el tipo que
-		// corresponda
-		treeEmpresas.setCellFactory(TextFieldTreeCell.forTreeView());
+			// Para que sea editable necesitamos especificar un CellFactory con el tipo que corresponda
+			treeEmpresas.setCellFactory(TextFieldTreeCell.forTreeView());
 
-		// Expadimos por defecto el ítem raíz
-		rootItem.setExpanded(true);
-		treeEmpresas.setRoot(rootItem);
+			// Expadimos por defecto el ítem raíz
+			rootItem.setExpanded(true);
+			treeEmpresas.setRoot(rootItem);
 
-		/* EVENTOS DE TECLADO */
-		// No permitir que la EDAD sean caracteres y solo sean dos dígitos
-		edadForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
-			if (!Character.isDigit(e.getCharacter().charAt(0)) || edadForm.getText().length() >= 2) {
-				e.consume();
-				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
-			} else {
-				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			}
-		});
-		// No permitir que EL TELÉFONO sean caracteres y solo sean nueve dígitos
-		telForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
-			if (!Character.isDigit(e.getCharacter().charAt(0)) || telForm.getText().length() >= 9) {
-				e.consume();
-				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
-			} else {
-				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			}
-		});
-		// No permitir que los NOMBRES tengan caracteres especiales o numeros
-		nombreForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
-			if (Character.isWhitespace(e.getCharacter().charAt(0))) {
-				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else if (Character.isDigit(e.getCharacter().charAt(0))
-					|| !Character.isAlphabetic(e.getCharacter().charAt(0))) {
-				e.consume();
-				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
-			} else {
-				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			}
-		});
-		// No permitir que los DNI tengan caracteres especiales o numeros
-		dniForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
-			if (Character.isDigit(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
-				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else if (Character.isAlphabetic(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
-				System.out.println("Caracter: " + e.getCharacter() + ", permitido");
-			} else {
-				e.consume();
-				System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
-			}
-		});
+		/* ---------------- EVENTOS DE TECLADO ---------------- */
+		// NO PERMITIR QUE LA EDAD SEAN CARACTERES ALFABÉTICOS Y SEAN COMO MÁXIMO 2 DÍGITOS
+			edadForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
+				if (!Character.isDigit(e.getCharacter().charAt(0)) || edadForm.getText().length() >= 2) {
+					e.consume();
+					System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+				} else {
+					System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+				}
+			});
+			
+		// NO PERMITIR QUE EL TELÉFONO SEAN CARACTERES ALFABÉTICOS Y SEAN COMO MÁXIMO 9 DÍGITOS
+			telForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
+				if (!Character.isDigit(e.getCharacter().charAt(0)) || telForm.getText().length() >= 9) {
+					e.consume();
+					System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+				} else {
+					System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+				}
+			});
+			
+		// NÓ PERMITIR QUE LOS NOMBRES TENGAN CARACTERES ESPECIALES O SEAN NÚMEROS
+			nombreForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
+				if (Character.isWhitespace(e.getCharacter().charAt(0))) {
+					System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+				} else if (Character.isDigit(e.getCharacter().charAt(0))
+						|| !Character.isAlphabetic(e.getCharacter().charAt(0))) {
+					e.consume();
+					System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+				} else {
+					System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+				}
+			});
+			
+		// NO PERMITIR QUE LOS DNI TENGAN CARACTERES ESPECIALES Y LA LONGITUD SEA COMO MÁXIMO 9 NÚMEROS
+			dniForm.addEventFilter(KeyEvent.KEY_TYPED, e -> {
+				if (Character.isDigit(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
+					System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+				} else if (Character.isAlphabetic(e.getCharacter().charAt(0)) && dniForm.getText().length() < 9) {
+					System.out.println("Caracter: " + e.getCharacter() + ", permitido");
+				} else {
+					e.consume();
+					System.out.println("Caracter: " + e.getCharacter() + ", no permitido");
+				}
+			});
 	}
 
-	/** Añadir datos a la tabla trabajadores */
+	/**
+	 * MÉTODO PARA AÑADIR DATOS A LA TABLA TRABAJADORES
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void addDatos(ActionEvent event) {
-		// Creamos el dialogo de tipo alert, de tipo error, con su nombre y su header ya
-		// que no cambiará a diferencia del contenido
+		// Creamos un alert de tipo error, con su nombre y su header ya que no cambiará a diferencia del contenido
 		Alert infoAlert = new Alert(AlertType.ERROR);
 		infoAlert.setTitle("Aviso");
 		infoAlert.setHeaderText("¡Se ha producido un error!");
+		
 		// Cambiamos el cursor mientras se encuentre dentro del Alert
 		infoAlert.getDialogPane().setCursor(Cursor.WAIT);
 
@@ -270,21 +290,20 @@ public class AppController {
 		// Cambiar la imagen del aviso
 		infoAlert.getDialogPane().setGraphic(new ImageView("img/warning.png"));
 
-		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u
-		// oscuro
+		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u oscuro
 		Scene panel = (Scene) tablaTrabajadores.getScene();
 		if (panel.getStylesheets().toString().equals("[practica/view/css/applight.css]")) {
 			DialogPane dialogPane = infoAlert.getDialogPane();
 			dialogPane.getStylesheets().add(getClass().getResource("dialoglight.css").toExternalForm());
 			dialogPane.getStyleClass().add("dialog");
+			
 		} else if (panel.getStylesheets().toString().equals("[practica/view/css/appdark.css]")) {
 			DialogPane dialogPane = infoAlert.getDialogPane();
 			dialogPane.getStylesheets().add(getClass().getResource("dialogdark.css").toExternalForm());
 			dialogPane.getStyleClass().add("dialog");
 		}
 
-		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
-		// o enter, para salir habrá que pulsar el botón de aceptar
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape o enter, para salir habrá que pulsar el botón de aceptar
 		stageAlert.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
 			System.out.println(" -> " + e.getCode().toString());
 			if (e.getCode() == ESCAPE) {
@@ -295,7 +314,7 @@ public class AppController {
 			}
 		});
 
-		// Permitimos que la tabla pueda ser editado
+		// Permitimos que la tabla de trabajadores pueda ser editado
 		tablaTrabajadores.setEditable(true);
 
 		// Añadimos datos a la tabla
@@ -307,6 +326,7 @@ public class AppController {
 		String telT = telForm.getText();
 		String emailTrabajador = emailForm.getText();
 
+		// Da un aviso (dialog) si alguno de los campos está vacío
 		if (nombreTrabajador.trim().isEmpty() || dniTrabajador.trim().isEmpty() || edadT.trim().isEmpty()
 				|| sexoElegido == null || telT.trim().isEmpty() || emailTrabajador.isEmpty()) {
 			infoAlert.setContentText("Los campos no pueden estar vacíos. Introduzca los datos de nuevo.");
@@ -316,12 +336,15 @@ public class AppController {
 			infoAlert.showAndWait();
 		} else {
 
+			// Se parsea los datos de ser necesario
 			int edadTrabajador = Integer.parseInt(edadT);
 			int telefonoTrabajador = Integer.parseInt(telT);
 			String sexoTrabajador = sexoElegido.getText();
-			datos.add(new Person(nombreTrabajador, dniTrabajador, edadTrabajador, sexoTrabajador, espTrabajador,
-					telefonoTrabajador, emailTrabajador));
+			
+			// Se añade al ObservableList el nuevo Empleado
+			datos.add(new Person(nombreTrabajador, dniTrabajador, edadTrabajador, sexoTrabajador, espTrabajador, telefonoTrabajador, emailTrabajador));
 
+			// Se deja en limpio el formulario
 			nombreForm.clear();
 			dniForm.clear();
 			edadForm.clear();
@@ -331,8 +354,11 @@ public class AppController {
 			espChoiceBox.setValue("Selecciona la especialización.");
 		}
 	}
-
-	/** Eliminar datos de la tabla trabajadores */
+	
+	/**
+	 * MÉTODO PARA ELIMINAR DATOS DE LA TABLA TRABAJADORES
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void removeDatos(ActionEvent event) {
 		// Permitimos que la tabla pueda ser editado
@@ -346,8 +372,7 @@ public class AppController {
 		alert.setHeaderText("Esta acción es peligrosa.");
 		alert.setContentText("Una vez confirmes esta acción, los datos no podrán ser restaurados.");
 		
-		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u
-		// oscuro
+		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u oscuro
 		Scene panel = (Scene) tablaTrabajadores.getScene();
 		if (panel.getStylesheets().toString().equals("[practica/view/css/applight.css]")) {
 			DialogPane dialogPane = alert.getDialogPane();
@@ -366,8 +391,7 @@ public class AppController {
 		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 		stage.getIcons().add(new Image("img/help.png"));
 
-		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
-		// o enter, para salir habrá que pulsar el botón de aceptar
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape o enter, para salir habrá que pulsar el botón de aceptar
 		stage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
 			System.out.println(" -> " + e.getCode().toString());
 			if (e.getCode() == ESCAPE) {
@@ -390,7 +414,10 @@ public class AppController {
 		}
 	}
 
-	/** Añadir datos a las citas */
+	/**
+	 * MÉTODO PARA AÑADIR DATOS A LA TABLA DE CITAS
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void addDates(ActionEvent event) {
 		// Creamos el dialogo de tipo alert, de tipo error, con su nombre y su header ya
@@ -421,9 +448,7 @@ public class AppController {
 					dialogPane.getStyleClass().add("dialog");
 				}
 		
-		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
-		// o enter,
-		// para salir habrá que pulsar el botón de aceptar
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape o enter, para salir habrá que pulsar el botón de aceptar
 		stageAlert.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
 			System.out.println(" -> " + e.getCode().toString());
 			if (e.getCode() == ESCAPE) {
@@ -451,8 +476,10 @@ public class AppController {
 			String asunto = asuntoForm.getText();
 			String prioridad = prioComboBox.getValue();
 
+			// Se añade en el Observable List la nueva cita
 			citaciones.add(new Citas(fecha, hora, asunto, prioridad));
 
+			// Se limpia el formulario
 			fechaForm.getEditor().clear();
 			horaForm.clear();
 			asuntoForm.clear();
@@ -460,7 +487,10 @@ public class AppController {
 		}
 	}
 
-	/** Eliminar datos de citas */
+	/**
+	 * MÉTODO PARA ELIMINAR DATOS DE LA TABLA DE CITAS
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void deleteDates(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -475,8 +505,7 @@ public class AppController {
 		// Gráfico
 		alert.getDialogPane().setGraphic(new ImageView("img/help.png"));
 
-		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u
-		// oscuro
+		// Para cambiar el estilo del aviso, dependiendo de si está en modo claro u oscuro
 		Scene panel = (Scene) tablaTrabajadores.getScene();
 		if (panel.getStylesheets().toString().equals("[practica/view/css/applight.css]")) {
 			DialogPane dialogPane = alert.getDialogPane();
@@ -488,9 +517,7 @@ public class AppController {
 			dialogPane.getStyleClass().add("dialog");
 		}
 		
-		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape
-		// o enter,
-		// para salir habrá que pulsar el botón de aceptar
+		// Añadimos un filtro que no nos permitirá salir del Dialogo si pulsamos escape o enter, para salir habrá que pulsar el botón de aceptar
 		stage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
 			System.out.println(" -> " + e.getCode().toString());
 			if (e.getCode() == ESCAPE) {
@@ -510,7 +537,10 @@ public class AppController {
 		}
 	}
 
-	/** Abrir tutorial */
+	/**
+	 * MÉTODO PARA ABRIR LA VENTANA DE TUTORIAL
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void abrirTutorial(ActionEvent event) {
 		Stage tutorialStage = new Stage();
@@ -522,6 +552,8 @@ public class AppController {
 
 			// Se añade el diseño principal a la escena
 			Scene scene = new Scene(tutorialOverview);
+			scene.getStylesheets().add("practica/view/css/tutorial.css");
+			
 			tutorialStage.setResizable(false);
 			tutorialStage.setTitle("Tutorial.");
 			tutorialStage.setScene(scene);
@@ -533,7 +565,10 @@ public class AppController {
 		}
 	}
 
-	/** Poner en modo claro */
+	/**
+	 * MÉTODO QUE HACE QUE LA ESCENA TENGA UN ESTILO DIFERENTE (MODO CLARO)
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void claro(ActionEvent event) {
 		Scene panel = (Scene) tablaTrabajadores.getScene();
@@ -541,7 +576,11 @@ public class AppController {
 		panel.getStylesheets().add("practica/view/css/applight.css");
 	}
 
-	/** Poner en modo oscuro */
+
+	/**
+	 * MÉTODO QUE HACE QUE LA ESCENA TENGA UN ESTILO DIFERENTE (MODO OSCURO)
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void oscuro(ActionEvent event) {
 		Scene panel = (Scene) tablaTrabajadores.getScene();
@@ -549,7 +588,11 @@ public class AppController {
 		panel.getStylesheets().add("practica/view/css/appdark.css");
 	}
 
-	/** Poner en modo defecto */
+
+	/**
+	 * MÉTODO QUE HACE QUE LA ESCENA TENGA UN ESTILO DIFERENTE (MODO DEFECTO)
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void defecto(ActionEvent event) {
 		Scene panel = (Scene) tablaTrabajadores.getScene();
@@ -557,13 +600,19 @@ public class AppController {
 				|| style.equals("practica/view/css/applight.css"));
 	}
 
-	/** SALIR DE LA APLICACIÓN */
+	/**
+	 * MÉTODO QUE NOS HACE SALIR DE TODA LA APLICACIÓN
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	private void exitApp(ActionEvent event) {
 		System.exit(0);
 	}
 
-	/** CERRAR SESIÓN DE LA APLICACIÓN Y QUE VUELVA A LA PANTALLA DEL LOGIN */
+	/**
+	 * MÉTODO QUE CIERRA SESIÓN DE LA APLICACIÓN Y HACE QUE VOLVAMOS A LA PANTALLA DE LOGIN
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	private void cerrarSesion(ActionEvent event) {
 		Stage stage = (Stage) tablaTrabajadores.getScene().getWindow();
@@ -571,7 +620,9 @@ public class AppController {
 		handleButtonLogout();
 	}
 
-	/** Logout */
+	/**
+	 * Método para realizar el cerrado de sesión
+	 */
 	private void handleButtonLogout() {
 		Parent root;
 		try {

@@ -2,12 +2,24 @@ package practica.model;
 
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * Clase Citas, con sus respectivos atributos, constructor y getters y setters
+ * @author Jane Orosco
+ *
+ */
 public class Citas {
 	private SimpleStringProperty fecha;
 	private SimpleStringProperty hora;
 	private SimpleStringProperty asunto;
 	private SimpleStringProperty prioridad;
 	
+	/**
+	 * Contructor de la clase Citas
+	 * @param paramFecha Fecha de la cita
+	 * @param paramHora Hora de la cita
+	 * @param paramAsunto Asunto de la cita
+	 * @param paramPrioridad Prioridad de la cita
+	 */
 	public Citas(String paramFecha, String paramHora, String paramAsunto, String paramPrioridad) {
 		super();
 		this.fecha = new SimpleStringProperty(paramFecha);

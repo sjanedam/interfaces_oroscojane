@@ -10,7 +10,13 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * Controlador de la ventana de Tutorial
+ * @author Jane Orosco
+ *
+ */
 public class TutorialController {
+	/* INICIALIZAMOS LAR VARIABLES @FXML */
 	@FXML
 	private MenuBar menu;
 
@@ -28,6 +34,7 @@ public class TutorialController {
 	private ArrayList<String> appImgs = new ArrayList<>();
 	
 	/**
+	 * MÉTODO EN EL QUE SE INICIALIZAN LOS DATOS
 	 * 
 	 */
 	@FXML
@@ -59,8 +66,8 @@ public class TutorialController {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * MÉTODO QUE NOS HACE SALIR DE TODA LA APLICACIÓN
+	 * @param event Nombre del evento que se produce
 	 */
 	@FXML
 	void exitApp(ActionEvent event) {
@@ -68,8 +75,8 @@ public class TutorialController {
 	}
 
 	/**
-	 * 
-	 * @param event
+	 * MÉTODO PARA CERRAR LA VENTANA DE TUTORIAL
+	 * @param event Nombre del evento que se produce
 	 */
 	@FXML
 	void exitTutorial(ActionEvent event) {
@@ -78,8 +85,8 @@ public class TutorialController {
 	}
 	
 	/**
-	 * 
-	 * @param appImgs
+	 * Método en el que se listan las rutas de las imagenes del tutorial de la app
+	 * @param appImgs Nombre del Arraylist<String>
 	 */
 	private void app(ArrayList<String> appImgs) {
 		appImgs.add("img\\tutorial\\app\\app.png");
@@ -110,8 +117,8 @@ public class TutorialController {
 	}
 	
 	/**
-	 * 
-	 * @param loginImgs
+	 * Método en el que se listan las rutas de las imagenes del tutorial del login
+	 * @param loginImgs  Nombre del Arraylist<String>
 	 */
 	private void login(ArrayList<String> loginImgs) {
 		loginImgs.add("img\\tutorial\\login\\login.png");

@@ -3,6 +3,11 @@ package practica.model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * Clase Person, con sus respectivos atributos, constructor y getters y setters
+ * @author Jane Orosco
+ *
+ */
 public class Person {
 	private SimpleStringProperty nombre;
     private SimpleStringProperty dni;
@@ -12,7 +17,16 @@ public class Person {
     private SimpleIntegerProperty telefono;
     private SimpleStringProperty email;
     
-    
+    /**
+     * Constructor de la clase Person
+     * @param paramNombre Nombre de la persona
+     * @param paramDNI DNI de la persona
+     * @param paramEdad Edad de la persona
+     * @param paramSexo Sexo de la persona
+     * @param paramEspecializacion Especialización de la persona
+     * @param paramTelefono Teléfono de la persona
+     * @param paramEmail Email de la persona
+     */
     public Person(String paramNombre, String paramDNI, Integer paramEdad,
     		String paramSexo, String paramEspecializacion, Integer paramTelefono,
     		String paramEmail) {

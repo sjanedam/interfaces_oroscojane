@@ -32,7 +32,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * Controlador de la página principal de la aplicación (Main)
+ * @author Jane Orosco
+ *
+ */
 public class MainController {
+	/* INICIALIZAMOS LAR VARIABLES @FXML */
 	@FXML
 	private ImageView login;
     @FXML
@@ -65,73 +71,85 @@ public class MainController {
    
 
 	/* ---------------- MÉTODOS ---------------- */		
-	/** INICIALIZAR */
+    /**
+	 * MÉTODO EN EL QUE SE INICIALIZAN LOS DATOS
+	 * 
+	 */
 	@FXML
 	void initialize() {
+		/* CURSOR */
 		login.setCursor(Cursor.HAND);
 		exit.setCursor(Cursor.HAND);
 		scheduleButton.setCursor(Cursor.HAND);
 		
-		// Inicializar el listado de Tamaños de empresa que se añadirán en el eje X del gráfico
-		String[] tamanyo = new String[] {"Autónomos", "Pequeñas", "Medianas", "Grandes"};
-		tamEmpresas.addAll(Arrays.asList(tamanyo));
+		/* --------------- BARCHART --------------- */
+			// Inicializar el listado de empresaS que se añadirán en el eje X del gráfico
+			String[] tamanyo = new String[] {"Autónomos", "Pequeñas", "Medianas", "Grandes"};
+			tamEmpresas.addAll(Arrays.asList(tamanyo));
+			
+			// Asignar los valores al eje X
+			tamEmpresa.setCategories(tamEmpresas);
+			
+			// Se añaden series al gráfico de tipo Barchart
+			chartEmpresas.getData().add(darDatosAnyo1());
+			chartEmpresas.getData().add(darDatosAnyo2());
+			chartEmpresas.getData().add(darDatosAnyo3());
+			chartEmpresas.getData().add(darDatosAnyo4());
+			chartEmpresas.getData().add(darDatosAnyo5());
 		
-		// Asignar los valores al eje X
-		tamEmpresa.setCategories(tamEmpresas);
+		/* --------------- PIECHART --------------- */
+			// Se añaden datos al ObservableList 
+			numProfesionales.add(new PieChart.Data("Empresarios", 2));
+			numProfesionales.add(new PieChart.Data("Abogados", 3));
+			numProfesionales.add(new PieChart.Data("Notarios", 2));
+			numProfesionales.add(new PieChart.Data("Seguros", 2));
+			numProfesionales.add(new PieChart.Data("Aseguradores", 3));
+			numProfesionales.add(new PieChart.Data("Adminsitrativos", 6));
+			
+			pieChart.setData(numProfesionales);
+			pieChart.setTitle("El número de profesionales que trabaja con nosotros");
+			
+			// Se añade un tooltip a cada sección
+			pieChart.getData().forEach(this::addTooltip);
 		
-		// Se añaden series al gráfico de tipo Barchart
-		chartEmpresas.getData().add(darDatosAnyo1());
-		chartEmpresas.getData().add(darDatosAnyo2());
-		chartEmpresas.getData().add(darDatosAnyo3());
-		chartEmpresas.getData().add(darDatosAnyo4());
-		chartEmpresas.getData().add(darDatosAnyo5());
-		
-		// Se añaden datos al PieChart
-		numProfesionales.add(new PieChart.Data("Empresarios", 2));
-		numProfesionales.add(new PieChart.Data("Abogados", 3));
-		numProfesionales.add(new PieChart.Data("Notarios", 2));
-		numProfesionales.add(new PieChart.Data("Seguros", 2));
-		numProfesionales.add(new PieChart.Data("Aseguradores", 3));
-		numProfesionales.add(new PieChart.Data("Adminsitrativos", 6));
-		
-		pieChart.setData(numProfesionales);
-		pieChart.setTitle("El número de profesionales que trabaja con nosotros");
-		pieChart.getData().forEach(this::addTooltip);
-		
-		
-		dateSlider.valueProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-				double newnum= (double) arg1;
-				if (Math.round(newnum) == 2018) { //7
-					dateLabel.textProperty().setValue("Al principio eran 7 empresas quienes confiaban en nuestro servicio.");
-				} else if (Math.round(newnum) == 2019) {// 11
-					dateLabel.textProperty().setValue("No crecimos mucho en 2019, pero ya eran 11 empresas confiando en nosotros.");
-				} else if (Math.round(newnum) == 2020) {// 14
-					dateLabel.textProperty().setValue("En 2020 se añadieron 3 empresas más, ya eran 14 empresas en nuestras manos.");
-				} else if (Math.round(newnum) == 2021) {// 24
-					dateLabel.textProperty().setValue("Pero a partir de 2021 crecimos mucho y ya eran 24 empresas las que confiaban en nuestro trabajo.");
-				} else {// 33
-					dateLabel.textProperty().setValue("Actualmente son 33 empresas las que confían en nosotros y ¡la tuya es la próxima!");
+		/* --------------- SLIDER --------------- */
+			dateSlider.valueProperty().addListener(new ChangeListener<Number>() {
+				@Override
+				public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+					double newnum= (double) arg1;
+					if (Math.round(newnum) == 2018) { //7
+						dateLabel.textProperty().setValue("Al principio eran 7 empresas quienes confiaban en nuestro servicio.");
+					} else if (Math.round(newnum) == 2019) {// 11
+						dateLabel.textProperty().setValue("No crecimos mucho en 2019, pero ya eran 11 empresas confiando en nosotros.");
+					} else if (Math.round(newnum) == 2020) {// 14
+						dateLabel.textProperty().setValue("En 2020 se añadieron 3 empresas más, ya eran 14 empresas en nuestras manos.");
+					} else if (Math.round(newnum) == 2021) {// 24
+						dateLabel.textProperty().setValue("Pero a partir de 2021 crecimos mucho y ya eran 24 empresas las que confiaban en nuestro trabajo.");
+					} else {// 33
+						dateLabel.textProperty().setValue("Actualmente son 33 empresas las que confían en nosotros y ¡la tuya es la próxima!");
+					}
 				}
-			}
-		});
+			});
 		
-		link.setOnAction(e -> {
-			System.out.println("Se ha vistado la página ");
-		});
+		/* --------------- HYPERLINK --------------- */
+			//TODO: Hyperlink funcionales
+			link.setOnAction(e -> {
+				System.out.println("Se ha vistado la página ");
+			});
 		
-		// STACKED AREA CHART
-		initStackedAreaChart();
+		/* --------------- STACKED AREA CHART --------------- */
+			initStackedAreaChart();
 		
 	}
 	
-	/** Añadir datos al Stacked Area Chart */
+	/**
+	 * MÉTODO PARA AÑADIR DATOS AL STACKED AREA CHART
+	 * 
+	 */
 	private void initStackedAreaChart() {
-        // Para los StackedAreaChart, SceneBuilder obliga a emplear dos NumberAxis cuyos valores deben 
-        // ser Number o tipos que heredan de este
+        // Para los StackedAreaChart, SceneBuilder obliga a emplear dos NumberAxis cuyos valores deben ser Number o tipos que heredan de este
         
-        // Se crean dos series con datos
+        // Se crean tantas series con como quiera tener en el gráfico
         XYChart.Series<Integer, Integer> anyo18 = new XYChart.Series<Integer, Integer>();
         anyo18.setName("Año 2018");
         anyo18.getData().add(new XYChart.Data<Integer, Integer>(1, 10));
@@ -214,19 +232,26 @@ public class MainController {
         stackArea.getData().add(anyo21);
         stackArea.getData().add(anyo22);
         
+        // Se añade la información del Stacked Area
         stackArea.getXAxis().setLabel("Mes");
         stackArea.getYAxis().setLabel("Número de clientes");
         stackArea.setTitle("Total de clientes que usan nuestros servicios");
     }
-	
-	/** Añadir un tooltip a cada sección del pie chart */
+
+	/**
+	 * MÉTODO PARA AÑADIR UN TOOLTIP A CADA SECCIÓN DEL PIE CHART
+	 * @param d Nombre que se le da a la variable de tipo PieChart.Data
+	 */
 	public void addTooltip(PieChart.Data d) {
 		String msg = String.format("%s : %s", d.getName(), d.getPieValue());
 		Tooltip tp = new Tooltip(msg);
 		Tooltip.install(d.getNode(), tp);
 	}
 	
-	/** MOSTRAR UN DIÁLOGO PARA MOSTRAR HORARIOS ESPECIALES */
+	/**
+	 * MÉTODO PARA MOSTRAR UN DIALOG CON LOS HORARIOS ESPECIALES DE LA EMPRESA
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
     void openSchedule(ActionEvent event) {
 		Alert horarioAlert = new Alert(AlertType.INFORMATION);
@@ -249,7 +274,10 @@ public class MainController {
 		horarioAlert.showAndWait();
     }
 
-	/** PANTALLA DE LOGIN (INICIO DE SESIÓN) */
+	/**
+	 * MÉTODO QUE CIERRA LA VENTANA ACTUAL Y LLAMA A LA PANTALLA DE INICIO DE SESIÓN
+	 * @param event Nombre del evento que se produce
+	 */
 	@FXML
 	void login(MouseEvent event) {
 		Stage appStage = (Stage) login.getScene().getWindow();
@@ -272,13 +300,20 @@ public class MainController {
 		}
 	}
 	
-	/** SALIR DE LA APLICACIÓN */
+	/**
+	 * MÉTODO QUE NOS HACE SALIR DE TODA LA APLICACIÓN
+	 * @param event Nombre del evento que se produce
+	 */
     @FXML
     void exit(MouseEvent event) {
     	System.exit(0);
     }
 	
-	/** MÉTODOS PARA AÑADOR DATOS AL BARCHART */
+	/* -------------------- MÉTODOS PARA AÑADOR DATOS AL BARCHART ------------- */
+    /**
+     * MÉTODO QUE DEVUELVE LOS DATOS DE UN AÑO DEPENDIENDO DE LA EMPRESA
+     * @return Datos que se recogen de un tipo de empresa en un año
+     */
 	private XYChart.Series<String, Integer> darDatosAnyo1() {
 		XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
 		
@@ -290,6 +325,10 @@ public class MainController {
 		
 		return series;
 	}
+	/**
+     * MÉTODO QUE DEVUELVE LOS DATOS DE UN AÑO DEPENDIENDO DE LA EMPRESA
+     * @return Datos que se recogen de un tipo de empresa en un año
+     */
 	private XYChart.Series<String, Integer> darDatosAnyo2() {
 		XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
 		
@@ -301,6 +340,10 @@ public class MainController {
 		
 		return series;
 	}
+	/**
+     * MÉTODO QUE DEVUELVE LOS DATOS DE UN AÑO DEPENDIENDO DE LA EMPRESA
+     * @return Datos que se recogen de un tipo de empresa en un año
+     */
 	private XYChart.Series<String, Integer> darDatosAnyo3() {
 		XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
 		
@@ -312,6 +355,10 @@ public class MainController {
 		
 		return series;
 	}
+	/**
+     * MÉTODO QUE DEVUELVE LOS DATOS DE UN AÑO DEPENDIENDO DE LA EMPRESA
+     * @return Datos que se recogen de un tipo de empresa en un año
+     */
 	private XYChart.Series<String, Integer> darDatosAnyo4() {
 		XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
 		
@@ -323,6 +370,10 @@ public class MainController {
 		
 		return series;
 	}
+	/**
+     * MÉTODO QUE DEVUELVE LOS DATOS DE UN AÑO DEPENDIENDO DE LA EMPRESA
+     * @return Datos que se recogen de un tipo de empresa en un año
+     */
 	private XYChart.Series<String, Integer> darDatosAnyo5() {
 		XYChart.Series<String, Integer> series = new XYChart.Series<String, Integer>();
 		
